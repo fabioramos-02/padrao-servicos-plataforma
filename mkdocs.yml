@@ -1,0 +1,63 @@
+site_name: Padrão de serviços da plataforma
+site_description: O que todo serviço precisa ter para entrar na Plataforma de Governo Digital de MS — guia para quem desenvolve no X-Forms e no Orquestrador.
+site_author: SETDIG — Secretaria-Executiva de Transformação Digital
+site_url: https://fabioramos-02.github.io/padrao-servicos-plataforma/
+
+docs_dir: docs
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/img/segov-logo.svg
+  favicon: assets/img/brasao-ms.svg
+  font: false
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Modo escuro
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Modo claro
+  features:
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+extra_css:
+  - assets/css/segov.css
+
+extra:
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - O padrão em uma tela: index.md
+  - Checklist do serviço: checklist.md
+  - Formulário: formulario.md
+  - X-Forms: xforms.md
+  - Orquestrador: orquestrador.md
+  - Homologação com a SETDIG: homologacao.md
+  - Referências: referencias.md
+  - Design deste guia: design.md
