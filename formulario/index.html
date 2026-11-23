@@ -18,7 +18,7 @@
         <link rel="prev" href="../checklist/">
       
       
-        <link rel="next" href="../xforms/">
+        <link rel="next" href="../formulario-renderizacao/">
       
       
       <link rel="icon" href="../assets/img/brasao-ms.svg">
@@ -347,6 +347,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../formulario-renderizacao/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Formulário: o que o cidadão vê
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../xforms/" class="md-nav__link">
         
   
@@ -538,7 +558,14 @@ aponta para lá.</p>
 <h2 id="para-parecer-o-mesmo-sistema">Para parecer o mesmo sistema<a class="headerlink" href="#para-parecer-o-mesmo-sistema" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use os componentes do <strong>Design System MS</strong>. Não crie botão, campo ou cor próprios.</li>
-<li>Os campos têm largura de acordo com o dado (CEP curto, endereço longo) e limite de caracteres.</li>
+<li><strong>Um campo por linha.</strong> No X-Forms, nunca marque <code>startWithNewLine: false</code> para pôr dois campos lado a lado
+  (<a href="https://fabioramos-02.github.io/estudo-formularios/01-diagramacao/">Diagramação</a>).</li>
+<li><strong>A ajuda fica abaixo do campo</strong>, como no <code>ds-input</code> do DS, e vira a mensagem de erro. Nunca entre o rótulo e o campo.</li>
+<li>A máscara (CPF, CEP, telefone) vem do X-Forms (<code>inputMask</code>): o DS não tem máscara.</li>
+<li>Os campos têm largura de acordo com o dado (CEP curto, endereço longo) e limite de caracteres. O DS ainda
+  não tem largura por conteúdo: todo campo ocupa 100%.</li>
+<li><strong>Confira sempre no Visualizar</strong>, nunca no Testar questionário. Veja
+  <a href="../formulario-renderizacao/">Formulário: o que o cidadão vê</a>.</li>
 <li>As mensagens de erro dizem o que fazer, perto do campo.</li>
 <li>O serviço abre com o mesmo cabeçalho e a mesma trilha da carta de serviço.</li>
 </ul>
