@@ -10,22 +10,22 @@ Exemplo: o formulário *Emitir certificado do ensino médio*, em desenvolvimento
 <div class="telas">
 
 <figure>
-  <img src="../assets/img/xforms/designer.png" alt="Designer do X-Forms: o formulário no canvas de edição, com a lista de componentes à esquerda e as propriedades à direita">
+  <a href="../assets/img/xforms/designer.png" target="_blank" rel="noopener" title="Abrir a imagem em outra aba"><img src="../assets/img/xforms/designer.png" alt="Designer do X-Forms: o formulário no canvas de edição, com a lista de componentes à esquerda e as propriedades à direita"></a>
   <figcaption><b>1. Designer (canvas).</b> Onde o formulário é montado. Mostra os campos em outro layout, com os controles de edição.</figcaption>
 </figure>
 
 <figure>
-  <img src="../assets/img/xforms/testar.png" alt="Aba Testar questionário: o formulário no tema padrão do SurveyJS, com barra de páginas e radio verde">
+  <a href="../assets/img/xforms/testar.png" target="_blank" rel="noopener" title="Abrir a imagem em outra aba"><img src="../assets/img/xforms/testar.png" alt="Aba Testar questionário: o formulário no tema padrão do SurveyJS, com barra de páginas e radio verde"></a>
   <figcaption><b>2. Testar questionário.</b> Roda o SurveyJS puro: outro tema, outra barra de etapas, outro radio. <b>Não é o que o cidadão vê.</b></figcaption>
 </figure>
 
 <figure>
-  <img src="../assets/img/xforms/visualizar-passo1.png" alt="Visualizar formulário no portal ms.gov.br: cabeçalho azul, pergunta Para quem é o certificado e botão Próximo">
+  <a href="../assets/img/xforms/visualizar-passo1.png" target="_blank" rel="noopener" title="Abrir a imagem em outra aba"><img src="../assets/img/xforms/visualizar-passo1.png" alt="Visualizar formulário no portal ms.gov.br: cabeçalho azul, pergunta Para quem é o certificado e botão Próximo"></a>
   <figcaption><b>3. Visualizar (portal).</b> É a tela do cidadão, com a cara do ms.gov.br. Foi feita pela X-VIA e <b>ainda não foi validada</b>.</figcaption>
 </figure>
 
 <figure>
-  <img src="../assets/img/xforms/visualizar-campos.png" alt="Visualizar formulário: Nome completo e CPF lado a lado, com o campo do CPF mais baixo que o do Nome">
+  <a href="../assets/img/xforms/visualizar-campos.png" target="_blank" rel="noopener" title="Abrir a imagem em outra aba"><img src="../assets/img/xforms/visualizar-campos.png" alt="Visualizar formulário: Nome completo e CPF lado a lado, com o campo do CPF mais baixo que o do Nome"></a>
   <figcaption><b>3. Visualizar, passo 2.</b> Nome completo e CPF lado a lado, desalinhados: a ajuda "Cadastro de Pessoa Física" fica entre o rótulo e o campo e empurra o CPF para baixo. O contador 0/150 fica solto embaixo do Nome.</figcaption>
 </figure>
 
