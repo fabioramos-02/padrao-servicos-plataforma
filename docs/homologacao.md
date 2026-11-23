@@ -17,7 +17,7 @@ vista de quem vai usar.
 | Item | Como confere |
 |---|---|
 | Os 7 requisitos | Navega no serviço como cidadão, no celular e no computador |
-| Padrão de formulário | [Checklist do formulário](https://fabioramos-02.github.io/estudo-formularios/04-checklist/) |
+| Padrão de formulário | [Checklist do formulário](https://fabioramos-02.github.io/estudo-formularios/04-checklist/), sempre no **Visualizar** (a tela do cidadão), nunca no Testar questionário ([por quê](formulario-renderizacao.md)) |
 | Linguagem simples | Lei 15.263/2025 e Decreto 16.744/2026 |
 | Acessibilidade | Teclado, leitor de tela e contraste |
 | Carta e serviço ligados | O botão "Acessar serviço" abre o serviço certo |

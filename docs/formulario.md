@@ -19,6 +19,13 @@ Pergunta que guia tudo: *isso deixa o formulário mais fácil de preencher?*
 ## Para parecer o mesmo sistema
 
 - Use os componentes do **Design System MS**. Não crie botão, campo ou cor próprios.
-- Os campos têm largura de acordo com o dado (CEP curto, endereço longo) e limite de caracteres.
+- **Um campo por linha.** No X-Forms, nunca marque `startWithNewLine: false` para pôr dois campos lado a lado
+  ([Diagramação](https://fabioramos-02.github.io/estudo-formularios/01-diagramacao/)).
+- **A ajuda fica abaixo do campo**, como no `ds-input` do DS, e vira a mensagem de erro. Nunca entre o rótulo e o campo.
+- A máscara (CPF, CEP, telefone) vem do X-Forms (`inputMask`): o DS não tem máscara.
+- Os campos têm largura de acordo com o dado (CEP curto, endereço longo) e limite de caracteres. O DS ainda
+  não tem largura por conteúdo: todo campo ocupa 100%.
+- **Confira sempre no Visualizar**, nunca no Testar questionário. Veja
+  [Formulário: o que o cidadão vê](formulario-renderizacao.md).
 - As mensagens de erro dizem o que fazer, perto do campo.
 - O serviço abre com o mesmo cabeçalho e a mesma trilha da carta de serviço.

@@ -56,6 +56,7 @@ nav:
   - O padrão em uma tela: index.md
   - Checklist do serviço: checklist.md
   - Formulário: formulario.md
+  - "Formulário: o que o cidadão vê": formulario-renderizacao.md
   - X-Forms: xforms.md
   - Orquestrador: orquestrador.md
   - Homologação com a SETDIG: homologacao.md

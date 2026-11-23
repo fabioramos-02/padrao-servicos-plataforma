@@ -3,6 +3,10 @@
 **Quando usar:** um serviço que é um pedido com formulário e um caminho de análise dentro do órgão, sem
 integração com sistema. O órgão monta na tela (X-Forms Designer + X-Flows) e publica a carta no CMS.
 
+!!! warning "O Testar questionário não é o que o cidadão vê"
+    Ele roda o SurveyJS puro, com outro tema e outro layout. Confira sempre no **Visualizar**.
+    Veja [Formulário: o que o cidadão vê](formulario-renderizacao.md).
+
 ## Passo a passo
 
 1. Peça o acesso ao Designer pela SETDIG.
