@@ -13,7 +13,7 @@ carta de serviço, pelo botão "Acessar serviço".
 5. Atenda os [7 requisitos](checklist.md), com atenção aos que só valem aqui:
     - recursos do celular no serviço nativo;
     - validação no servidor e consultas com parâmetros;
-    - status em Serviços em andamento e log de uso.
+    - status em Serviços em andamento e o evento de uso que permite o serviço proativo.
 6. Entregue o código para a revisão técnica da X-VIA (repasse técnico).
 7. Peça a [homologação](homologacao.md) à SETDIG.
 

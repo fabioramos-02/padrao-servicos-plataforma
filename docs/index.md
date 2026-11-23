@@ -29,7 +29,7 @@ flowchart LR
 | 2 | aproveita os **recursos do celular** quando precisa | [Checklist](checklist.md#2-aproveita-os-recursos-do-celular) |
 | 3 | termina com a **Avaliação de Serviços** | [Checklist](checklist.md#3-termina-com-a-avaliacao-de-servicos) |
 | 4 | mostra o **status na Minha área** | [Checklist](checklist.md#4-mostra-o-status-na-minha-area) |
-| 5 | gera **log** para o "Sugestões para você" | [Checklist](checklist.md#5-gera-log-para-o-sugestoes-para-voce) |
+| 5 | permite o **serviço proativo** (avisa antes de o cidadão pedir) | [Checklist](checklist.md#5-permite-o-servico-proativo) |
 | 6 | **protege os campos** | [Checklist](checklist.md#6-protege-os-campos) |
 | 7 | passa pela **homologação com a SETDIG** | [Homologação](homologacao.md) |
 

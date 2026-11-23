@@ -45,12 +45,14 @@ também quando o cidadão não pediu pelo app.
 
 *Formato da integração com a Minha área: a definir com a X-VIA.*
 
-## 5. Gera log para o "Sugestões para você"
+## 5. Permite o serviço proativo
 
-O serviço registra o uso (quem usou, qual serviço, quando) para a plataforma sugerir os próximos serviços ao
-cidadão.
+A plataforma oferece o serviço **antes de o cidadão pedir**: avisa que a carteira vai vencer, lembra a
+renovação, sugere o próximo passo depois de um pedido. Para isso, todo serviço registra o uso (quem usou, qual
+serviço, quando e o que foi concedido, com a validade) e a plataforma mostra o aviso em **Sugestões para você**.
 
 - [ ] O serviço envia o evento de uso para a plataforma.
+- [ ] O evento traz a data de validade, quando o que foi concedido vence (licença, carteira, certidão).
 - [ ] O log não leva dado sensível além do necessário (LGPD).
 
 *Formato do evento: a definir com a X-VIA.*
