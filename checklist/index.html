@@ -331,9 +331,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-gera-log-para-o-sugestoes-para-voce" class="md-nav__link">
+  <a href="#5-permite-o-servico-proativo" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Gera log para o "Sugestões para você"
+      5. Permite o serviço proativo
     </span>
   </a>
   
@@ -557,9 +557,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-gera-log-para-o-sugestoes-para-voce" class="md-nav__link">
+  <a href="#5-permite-o-servico-proativo" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Gera log para o "Sugestões para você"
+      5. Permite o serviço proativo
     </span>
   </a>
   
@@ -647,11 +647,13 @@ também quando o cidadão não pediu pelo app.</p>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O status é escrito para o cidadão (ex.: "Em análise"), não com o código interno.</li>
 </ul>
 <p><em>Formato da integração com a Minha área: a definir com a X-VIA.</em></p>
-<h2 id="5-gera-log-para-o-sugestoes-para-voce">5. Gera log para o "Sugestões para você"<a class="headerlink" href="#5-gera-log-para-o-sugestoes-para-voce" title="Permanent link">&para;</a></h2>
-<p>O serviço registra o uso (quem usou, qual serviço, quando) para a plataforma sugerir os próximos serviços ao
-cidadão.</p>
+<h2 id="5-permite-o-servico-proativo">5. Permite o serviço proativo<a class="headerlink" href="#5-permite-o-servico-proativo" title="Permanent link">&para;</a></h2>
+<p>A plataforma oferece o serviço <strong>antes de o cidadão pedir</strong>: avisa que a carteira vai vencer, lembra a
+renovação, sugere o próximo passo depois de um pedido. Para isso, todo serviço registra o uso (quem usou, qual
+serviço, quando e o que foi concedido, com a validade) e a plataforma mostra o aviso em <strong>Sugestões para você</strong>.</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O serviço envia o evento de uso para a plataforma.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O evento traz a data de validade, quando o que foi concedido vence (licença, carteira, certidão).</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O log não leva dado sensível além do necessário (LGPD).</li>
 </ul>
 <p><em>Formato do evento: a definir com a X-VIA.</em></p>
