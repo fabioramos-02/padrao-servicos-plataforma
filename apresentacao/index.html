@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Padrão de serviço — governança</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #004f9f; --azul-escuro: #00305f; --azul-claro: #e6eef7;
+    --verde: #168821; --amarelo: #ffcd07; --tinta: #1b1f24; --cinza: #5c6670; --linha: #d5dde6;
+    --papel: #f7f9fc;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: "Open Sans", system-ui, sans-serif; color: var(--tinta); background: var(--papel);
+    background-image: radial-gradient(circle at 1px 1px, #dbe4ee 1px, transparent 0); background-size: 22px 22px;
+    line-height: 1.45;
+  }
+  .pagina { max-width: 1180px; margin: 0 auto; padding: 32px 24px 40px; }
+  h1, h2, .num, .etapa b { font-family: Roboto, sans-serif; }
+
+  /* faixa institucional */
+  .faixa { display: flex; align-items: center; gap: 12px; font-size: .8rem; color: var(--cinza); letter-spacing: .04em; text-transform: uppercase; }
+  .faixa::before { content: ""; width: 36px; height: 6px; background: linear-gradient(90deg, var(--azul) 0 50%, var(--amarelo) 50% 75%, var(--verde) 75%); border-radius: 3px; }
+
+  header { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: end; margin: 14px 0 28px; }
+  h1 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 900; line-height: 1.05; color: var(--azul-escuro); }
+  h1 em { font-style: normal; color: var(--azul); box-shadow: inset 0 -.28em 0 var(--amarelo); }
+  .lead { font-size: 1.05rem; color: var(--cinza); border-left: 4px solid var(--azul); padding-left: 16px; }
+  .lead strong { color: var(--tinta); }
+
+  h2 { font-size: .95rem; font-weight: 700; color: var(--azul); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; display: flex; gap: 10px; align-items: center; }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--linha); }
+
+  /* trilho */
+  .trilho { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; margin-bottom: 10px; }
+  .trilho::before { content: ""; position: absolute; top: 27px; left: 6%; right: 6%; height: 4px; background: var(--azul); border-radius: 2px; }
+  .etapa { position: relative; text-align: center; padding: 0 8px; }
+  .etapa .marco { width: 58px; height: 58px; margin: 0 auto 10px; border-radius: 50%; background: #fff; border: 4px solid var(--azul); display: grid; place-items: center; font: 900 1.25rem Roboto, sans-serif; color: var(--azul); position: relative; z-index: 1; }
+  .etapa b { display: block; font-size: .98rem; color: var(--azul-escuro); }
+  .etapa span { display: block; font-size: .8rem; color: var(--cinza); margin-top: 3px; }
+  .etapa .quem { font-style: normal; display: inline-block; margin-top: 6px; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--azul-claro); color: var(--azul); }
+  .etapa .quem.orgao { background: #eef7ef; color: var(--verde); }
+  .etapa.porta .marco { background: var(--amarelo); border-color: var(--azul-escuro); color: var(--azul-escuro); transform: scale(1.12); box-shadow: 0 6px 18px rgba(0,48,95,.25); }
+  .etapa.fim .marco { background: var(--azul); color: #fff; }
+  .volta { text-align: center; font-size: .82rem; color: var(--cinza); margin: 4px 0 30px; }
+  .volta b { color: #b3261e; }
+
+  /* requisitos */
+  .grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .req { background: #fff; border: 1px solid var(--linha); border-radius: 10px; padding: 16px 16px 14px; position: relative; overflow: hidden; }
+  .req::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--azul); }
+  .req .num { font-size: 2rem; font-weight: 900; color: var(--azul-claro); position: absolute; right: 12px; top: 2px; line-height: 1; -webkit-text-stroke: 1px #b9cde3; }
+  .req h3 { font: 700 1rem Roboto, sans-serif; color: var(--azul-escuro); margin-bottom: 5px; padding-right: 34px; }
+  .req p { font-size: .85rem; color: var(--cinza); }
+  .req.chave { background: var(--azul); border-color: var(--azul); }
+  .req.chave::before { background: var(--amarelo); }
+  .req.chave h3, .req.chave p { color: #fff; }
+  .req.chave .num { color: rgba(255,255,255,.18); -webkit-text-stroke: 0; }
+  .req.base { grid-column: span 1; background: repeating-linear-gradient(135deg, #fff 0 10px, #f3f6fa 10px 20px); border-style: dashed; }
+
+  footer { margin-top: 26px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .8rem; color: var(--cinza); border-top: 1px solid var(--linha); padding-top: 12px; }
+  footer a { color: var(--azul); font-weight: 600; }
+
+
+  @media (max-width: 900px) {
+    header { grid-template-columns: 1fr; }
+    .grade { grid-template-columns: repeat(2, 1fr); }
+    .trilho { grid-template-columns: 1fr; gap: 14px; }
+    .trilho::before { top: 6px; bottom: 6px; left: 27px; right: auto; width: 4px; height: auto; }
+    .etapa { display: grid; grid-template-columns: 58px 1fr; gap: 14px; text-align: left; align-items: center; }
+    .etapa .marco { margin: 0; }
+    .etapa.porta .marco { transform: none; }
+  }
+  @media (max-width: 520px) { .grade { grid-template-columns: 1fr; } .pagina { padding: 20px 16px; } }
+  @media print {
+    body { background: #fff; } .pagina { padding: 0; max-width: none; }
+    @page { size: A4 landscape; margin: 12mm; }
+  }
+</style>
+</head>
+<body>
+<main class="pagina">
+  <div class="faixa">SETDIG · Superintendência de Governo Digital · Plataforma de Governo Digital de MS</div>
+
+  <header>
+    <h1>Um padrão.<br>Todo serviço <em>parece o mesmo sistema</em>.</h1>
+    <p class="lead">Serviço é, no fundo, um formulário. Quem constrói no <strong>X-Forms</strong> ou no <strong>Orquestrador</strong> segue os mesmos 7 requisitos. A <strong>SETDIG homologa</strong> antes de publicar.</p>
+  </header>
+
+  <section aria-labelledby="t-fluxo">
+    <h2 id="t-fluxo">Como um serviço chega ao cidadão</h2>
+    <ol class="trilho">
+      <li class="etapa"><div class="marco">1</div><div><b>Órgão pede</b><span>o serviço novo</span><em class="quem orgao">Órgão</em></div></li>
+      <li class="etapa"><div class="marco">2</div><div><b>SETDIG aprova</b><span>e prioriza no portfólio</span><em class="quem">SETDIG</em></div></li>
+      <li class="etapa"><div class="marco">3</div><div><b>Órgão constrói</b><span>no X-Forms ou no Orquestrador</span><em class="quem orgao">Órgão</em></div></li>
+      <li class="etapa"><div class="marco">4</div><div><b>Confere o checklist</b><span>os 7 requisitos e o formulário</span><em class="quem orgao">Órgão</em></div></li>
+      <li class="etapa porta"><div class="marco">5</div><div><b>Homologa</b><span>porta de entrada: sem aceite, não publica</span><em class="quem">SETDIG</em></div></li>
+      <li class="etapa fim"><div class="marco">6</div><div><b>Publica</b><span>o serviço e a carta</span><em class="quem orgao">Órgão</em></div></li>
+    </ol>
+    <p class="volta">Na homologação, o que não atende <b>volta para ajuste</b> na etapa 3.</p>
+  </section>
+
+  <section aria-labelledby="t-req">
+    <h2 id="t-req">Os 7 requisitos de todo serviço</h2>
+    <div class="grade">
+      <article class="req"><span class="num">1</span><h3>Dados mestres</h3><p>Puxa da fonte oficial. Não pede ao cidadão o que o Estado já sabe.</p></article>
+      <article class="req"><span class="num">2</span><h3>Recursos do celular</h3><p>No serviço nativo, usa localização e câmera quando poupa trabalho.</p></article>
+      <article class="req"><span class="num">3</span><h3>Avaliação de Serviços</h3><p>Todo serviço termina com a avaliação padrão, no modelo gov.br.</p></article>
+      <article class="req"><span class="num">4</span><h3>Status na Minha área</h3><p>O pedido aparece em Serviços em andamento, com status que o cidadão entende.</p></article>
+      <article class="req"><span class="num">5</span><h3>Log de uso</h3><p>Registra o uso para o "Sugestões para você", sem dado além do necessário.</p></article>
+      <article class="req"><span class="num">6</span><h3>Campos protegidos</h3><p>Valida no servidor, limita tamanho e bloqueia SQL injection.</p></article>
+      <article class="req chave"><span class="num">7</span><h3>Homologação SETDIG</h3><p>Nenhum serviço vai ao ar sem o aceite da SETDIG.</p></article>
+      <article class="req base"><span class="num">+</span><h3>Formulário no padrão</h3><p>Design System MS e o Estudo de Formulários. Mesmo campo, mesmo jeito.</p></article>
+    </div>
+  </section>
+
+  <footer>
+    <span>Começa por X-Forms e Orquestrador · Foco da semana de 23/11/2026</span>
+    <span>Guia completo para o desenvolvedor: <a href="../">padrão de serviços da plataforma</a></span>
+  </footer>
+</main>
+</body>
+</html>
