@@ -1,0 +1,77 @@
+# AGENTS.md — serviço da Plataforma de Governo Digital de MS
+
+Este repositório é um **serviço da Plataforma de Governo Digital de Mato Grosso do Sul** (ms.gov.br), criado pelo
+**Orquestrador**. Ele tem um microfrontend (a tela) e a regra de negócio. A tela abre no portal pelo botão
+"Acessar serviço" da carta de serviço. Quem governa o padrão é a SETDIG, a Secretaria-Executiva de Transformação
+Digital.
+
+Siga as regras abaixo em todo código que gerar. Se uma regra impedir o que foi pedido, **pare e diga qual**, em vez
+de contornar.
+
+Padrão completo: <https://fabioramos-02.github.io/padrao-servicos-plataforma/>
+
+## Interface
+- Use só componentes do **Design System MS** (`@plataforma-xvia/ds-react` ou `ds-wc`). Antes de criar tela, leia o
+  `llms.txt` do pacote `@plataforma-xvia/ds-react`.
+- Não crie botão, campo, cor, fonte ou espaçamento próprio. Cor e espaço vêm só dos tokens `--ds-*`.
+- Mantenha o cabeçalho, a trilha e o rodapé do portal.
+- Se faltar componente no DS, avise e use o mais próximo. Não invente um.
+
+## Login e dados do cidadão
+- Login **só pelo SmartPass**. Nunca crie login, cadastro de senha ou sessão própria.
+- Dados do cidadão logado (nome, CPF, endereço, contato) vêm dos **dados mestres** da plataforma, já preenchidos.
+  Não crie base própria de cidadão e não peça de novo o que a plataforma já tem.
+- Guarde só o dado pessoal que o serviço precisa para funcionar (LGPD).
+
+## Formulário
+- **Um campo por linha.** Campos do mesmo assunto ficam juntos.
+- A ordem do campo é: rótulo, campo e **ajuda abaixo do campo**. A mensagem de erro aparece no mesmo lugar da ajuda.
+  Nunca ponha a ajuda entre o rótulo e o campo.
+- Escreva o rótulo em linguagem simples (Lei 15.263/2025): curto, voz ativa, sem jargão.
+- O nome técnico do campo segue o
+  [dicionário de campos canônicos](https://fabioramos-02.github.io/estudo-formularios/03-nomenclatura/#35-dicionario-de-campos-canonicos):
+  mesmo campo, mesmo nome e mesma máscara em todo serviço.
+- A largura do campo segue o dado (CEP curto, endereço longo), e todo campo tem limite de caracteres.
+- Escolha única com 2 a 4 opções que precisam de explicação usa a opção em card do DS (em criação; até lá, use o radio do DS). Fora disso, use o radio ou a
+  lista do DS.
+- Etapas usam o `ds-stepper`. O resumo de erros fica no topo, com `ds-alert`.
+- Regras: [padrão de formulário](https://fabioramos-02.github.io/padrao-servicos-plataforma/formulario/).
+
+## Segurança
+- Valide todo campo **no servidor**, além da tela: tipo, tamanho e formato.
+- Consulta a banco usa **parâmetros**. Nunca concatene texto do usuário em SQL.
+- Escape todo texto digitado antes de mostrar na tela (contra XSS).
+- Anexo tem tipo e tamanho limitados, conferidos no servidor.
+- Não registre em log CPF, senha, token ou dado de saúde.
+
+## Fim do fluxo
+Estes pontos ainda estão sendo definidos com a X-VIA. Deixe o ponto de integração pronto e marque com `TODO(plataforma)`:
+- **Avaliação de Serviços:** depois de concluir o pedido, o cidadão vê a avaliação padrão da plataforma. Não crie
+  pesquisa própria.
+- **Serviços em andamento:** ao enviar, o pedido aparece na Minha área, e cada mudança de etapa atualiza o status.
+  Use nomes de etapa que o cidadão entende, como "Em análise", e não o código interno.
+- **Serviço proativo:** o serviço envia o evento de uso para a plataforma, com a data de validade quando o que foi
+  concedido vence.
+
+## Celular
+- Se o serviço pede um local, ofereça "usar minha localização". Se pede foto de documento, abra a câmera.
+- Peça a permissão só na hora do uso e diga por quê.
+
+## Acessibilidade
+- Contraste AA. Tudo funciona só pelo teclado, com foco visível.
+- Grupo de opções em `fieldset` com `legend`. Todo campo tem `label` ligado ao campo.
+- Ícone decorativo leva `aria-hidden="true"`.
+
+## Não faça
+- Login próprio ou tela de senha.
+- Base própria de dados do cidadão.
+- Componente, cor ou CSS fora do Design System.
+- Dois campos lado a lado.
+- SQL montado com texto do usuário.
+- Pesquisa de satisfação própria.
+
+## Antes de entregar
+1. Confira o [checklist do serviço](https://fabioramos-02.github.io/padrao-servicos-plataforma/checklist/).
+2. Entregue o código para a revisão técnica da X-VIA.
+3. Peça a [homologação à SETDIG](https://fabioramos-02.github.io/padrao-servicos-plataforma/homologacao/).
+   A IA ajuda, mas não substitui a homologação.
