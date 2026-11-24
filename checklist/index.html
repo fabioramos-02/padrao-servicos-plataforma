@@ -378,9 +378,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tambem-conta" class="md-nav__link">
+  <a href="#base-de-todo-servico" class="md-nav__link">
     <span class="md-ellipsis">
-      Também conta
+      Base de todo serviço
     </span>
   </a>
   
@@ -644,9 +644,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tambem-conta" class="md-nav__link">
+  <a href="#base-de-todo-servico" class="md-nav__link">
     <span class="md-ellipsis">
-      Também conta
+      Base de todo serviço
     </span>
   </a>
   
@@ -670,6 +670,7 @@
 <h1 id="checklist-do-servico">Checklist do serviço<a class="headerlink" href="#checklist-do-servico" title="Permanent link">&para;</a></h1>
 <p>Confira cada item antes de pedir a homologação. A resposta é <strong>sim</strong>, <strong>não</strong> ou <strong>não se aplica</strong>. Todo <strong>não</strong>
 precisa de uma justificativa.</p>
+<p>Cada requisito diz <strong>como a SETDIG confere</strong> na homologação. Teste do mesmo jeito antes de pedir.</p>
 <div class="admonition warning">
 <p class="admonition-title">Em construção</p>
 <p>Os itens marcados com <em>a definir com a X-VIA</em> ainda dependem de como a plataforma expõe o recurso. O
@@ -679,10 +680,14 @@ requisito vale; o "como fazer" entra aqui quando estiver combinado.</p>
 <p>Cada dado tem <strong>uma fonte oficial</strong> no Estado, como nome e CPF, endereço e data de nascimento. O serviço puxa o dado
 dessa fonte. Ele não pede ao cidadão o que o Estado já sabe, nem cria uma cópia própria.</p>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O cidadão entra pelo <strong>SmartPass</strong>. O serviço não tem login, senha ou cadastro próprio.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Os dados do cidadão logado vêm preenchidos da fonte oficial.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O cidadão só digita o que a plataforma não tem.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O endereço usa a base de endereço da plataforma, não um campo livre.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pedido feito por outra pessoa (dependente, representante legal) usa o vínculo que a plataforma conhece.
+  <em>A definir com a X-VIA.</em></li>
 </ul>
+<p><strong>Como a SETDIG confere:</strong> entra com uma conta de teste e vê se nome, CPF e endereço já chegam preenchidos.</p>
 <p><em>A lista de dados mestres e quem é dono de cada um: a definir com a X-VIA (apresentação dos dados mestres).</em></p>
 <h2 id="2-aproveita-os-recursos-do-celular">2. Aproveita os recursos do celular<a class="headerlink" href="#2-aproveita-os-recursos-do-celular" title="Permanent link">&para;</a></h2>
 <p>No serviço <strong>nativo</strong> (Orquestrador, dentro do app), use o que o celular já oferece <strong>quando isso poupa trabalho do
@@ -691,21 +696,28 @@ cidadão</strong>: localização, câmera para foto de documento e notificaçõe
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Se o serviço pede um local, ele oferece "usar minha localização".</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Se pede foto de documento, ele abre a câmera.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O serviço pede a permissão só na hora do uso e diz por quê.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O serviço funciona do começo ao fim na tela do celular, sem zoom e sem rolar para o lado.</li>
 </ul>
+<p><strong>Como a SETDIG confere:</strong> faz o pedido inteiro num celular, recusando a permissão uma vez para ver se o serviço
+continua.</p>
 <h2 id="3-termina-com-a-avaliacao-de-servicos">3. Termina com a Avaliação de Serviços<a class="headerlink" href="#3-termina-com-a-avaliacao-de-servicos" title="Permanent link">&para;</a></h2>
 <p>O último passo de todo serviço é a <strong>Avaliação de Serviços</strong>, no modelo do gov.br (Portaria SGD/MGI nº 1.083/2025).</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Depois de concluir o pedido, o cidadão vê a avaliação.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A avaliação é a padrão da plataforma, não uma pesquisa própria do órgão.</li>
 </ul>
+<p><strong>Como a SETDIG confere:</strong> conclui um pedido e vê se a avaliação aparece e chega à plataforma.</p>
 <h2 id="4-mostra-o-status-na-minha-area">4. Mostra o status na Minha área<a class="headerlink" href="#4-mostra-o-status-na-minha-area" title="Permanent link">&para;</a></h2>
 <p>O pedido aparece em <strong>Minha área › Serviços em andamento</strong>, no portal novo e no app, com o status atualizado. Vale
 também quando o cidadão não pediu pelo app.</p>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ao enviar, o cidadão vê o <strong>número do pedido</strong> e pode guardar o comprovante.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ao enviar, o pedido aparece em Serviços em andamento.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Cada mudança de etapa atualiza o status.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O status é escrito para o cidadão (ex.: "Em análise"), não com o código interno.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Quando o órgão pede correção ou documento, o cidadão fica sabendo e consegue responder.</li>
 </ul>
+<p><strong>Como a SETDIG confere:</strong> envia um pedido, muda a etapa no lado do órgão e vê o status mudar na Minha área.</p>
 <p><em>Formato da integração com a Minha área: a definir com a X-VIA.</em></p>
 <h2 id="5-permite-o-servico-proativo">5. Permite o serviço proativo<a class="headerlink" href="#5-permite-o-servico-proativo" title="Permanent link">&para;</a></h2>
 <p>A plataforma oferece o serviço <strong>antes de o cidadão pedir</strong>: avisa que a carteira vai vencer, lembra a
@@ -716,6 +728,7 @@ serviço, quando e o que foi concedido, com a validade) e a plataforma mostra o 
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O evento traz a data de validade, quando o que foi concedido vence (licença, carteira, certidão).</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O log não leva dado sensível além do necessário (LGPD).</li>
 </ul>
+<p><strong>Como a SETDIG confere:</strong> conclui um pedido e confere se o evento chegou, com a validade.</p>
 <p><em>Formato do evento: a definir com a X-VIA.</em></p>
 <h2 id="6-protege-os-campos">6. Protege os campos<a class="headerlink" href="#6-protege-os-campos" title="Permanent link">&para;</a></h2>
 <p>Todo campo é tratado como entrada não confiável.</p>
@@ -725,17 +738,32 @@ serviço, quando e o que foi concedido, com a validade) e a plataforma mostra o 
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O texto digitado é escapado antes de aparecer na tela (contra XSS).</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Os campos têm limite de tamanho.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Os anexos têm tipo e tamanho limitados.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O log não guarda CPF, senha, token nem dado de saúde.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Se der erro ou um sistema do órgão cair, o cidadão <strong>não perde o que digitou</strong> e a mensagem diz o que fazer.</li>
 </ul>
+<p><strong>Como a SETDIG confere:</strong> digita texto longo, caracteres especiais e anexo grande ou de outro tipo, e vê o serviço
+recusar com uma mensagem clara.</p>
 <h2 id="7-passa-pela-homologacao-com-a-setdig">7. Passa pela homologação com a SETDIG<a class="headerlink" href="#7-passa-pela-homologacao-com-a-setdig" title="Permanent link">&para;</a></h2>
 <p>Nenhum serviço é publicado sem a homologação. Veja <a href="../homologacao/">Homologação com a SETDIG</a>.</p>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A X-VIA fez a revisão técnica do código (serviço do Orquestrador).</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A SETDIG homologou e registrou o aceite.</li>
 </ul>
-<h2 id="tambem-conta">Também conta<a class="headerlink" href="#tambem-conta" title="Permanent link">&para;</a></h2>
+<h2 id="base-de-todo-servico">Base de todo serviço<a class="headerlink" href="#base-de-todo-servico" title="Permanent link">&para;</a></h2>
+<p>Valem para qualquer serviço, junto com os 7 requisitos.</p>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A tela usa só componentes do <strong>Design System MS</strong>, sem cor, botão ou campo próprio.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O formulário segue o <a href="../formulario/">padrão de formulário</a>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Rótulos, ajudas e mensagens estão em <strong>linguagem simples</strong> (Lei 15.263/2025 e Decreto 16.744/2026).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Acessibilidade:</strong> tudo funciona só pelo teclado, com foco visível, contraste AA e leitura correta no leitor
+  de tela.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> O fim do serviço traz o aviso de privacidade e o termo de ciência, quando há dado pessoal.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A carta de serviço está publicada e aponta para o serviço.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A carta de serviço está publicada e o botão "Acessar serviço" abre o serviço certo.</li>
+</ul>
+<p><strong>Quando se aplica:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Serviço com taxa: o pagamento usa o meio da plataforma. <em>A definir com a X-VIA.</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Serviço que exige assinatura: usa a assinatura gov.br da plataforma. <em>A definir com a X-VIA.</em></li>
 </ul>
 
 
