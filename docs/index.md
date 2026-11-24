@@ -39,4 +39,5 @@ E o formulário segue o [padrão de formulário](formulario.md).
 
 - Vai montar no **X-Forms**? Leia [X-Forms](xforms.md).
 - Vai programar no **Orquestrador**? Leia [Orquestrador](orquestrador.md).
+- Qual componente usar? Veja [Componentes do formulário](componentes.md).
 - Terminou? Confira o [checklist](checklist.md) e peça a [homologação](homologacao.md).

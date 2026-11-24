@@ -9,6 +9,7 @@ Instruções para agentes de IA que geram código de serviço: https://fabioramo
 - [O padrão em uma tela](https://fabioramos-02.github.io/padrao-servicos-plataforma/): o caminho do serviço e os 7 requisitos
 - [Checklist do serviço](https://fabioramos-02.github.io/padrao-servicos-plataforma/checklist/): o que conferir em cada requisito
 - [Formulário](https://fabioramos-02.github.io/padrao-servicos-plataforma/formulario/): regras de layout e campos
+- [Componentes do formulário](https://fabioramos-02.github.io/padrao-servicos-plataforma/componentes/): qual componente do DS usar e o que fazer quando falta
 - [Formulário: o que o cidadão vê](https://fabioramos-02.github.io/padrao-servicos-plataforma/formulario-renderizacao/): as telas do X-Forms e o que muda
 - [X-Forms](https://fabioramos-02.github.io/padrao-servicos-plataforma/xforms/): serviço montado na tela
 - [Orquestrador](https://fabioramos-02.github.io/padrao-servicos-plataforma/orquestrador/): serviço desenvolvido pela TI do órgão

@@ -33,4 +33,4 @@ adotamos** de cada uma e onde a regra está detalhada.
 | Botões | Um botão principal por etapa, com verbo: "Continuar" e, no fim, "Enviar solicitação" | GOV.UK |
 
 O que o Design System ainda não tem (largura por conteúdo, máscara e grupo de radio) está em
-[Formulário: o que o cidadão vê](formulario-renderizacao.md#o-design-system-ja-tem-os-componentes).
+[Componentes do formulário](componentes.md).

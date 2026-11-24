@@ -25,6 +25,7 @@ theme:
         icon: material/weather-night
         name: Modo claro
   features:
+    - navigation.sections
     - navigation.top
     - toc.follow
     - content.code.copy
@@ -53,14 +54,19 @@ markdown_extensions:
       custom_checkbox: true
 
 nav:
-  - O padrão em uma tela: index.md
-  - "Resumo visual (apresentação)": https://fabioramos-02.github.io/padrao-servicos-plataforma/apresentacao/
+  - Início:
+      - O padrão em uma tela: index.md
+      - "Resumo visual (apresentação)": https://fabioramos-02.github.io/padrao-servicos-plataforma/apresentacao/
   - Checklist do serviço: checklist.md
-  - Formulário: formulario.md
-  - "Formulário: o que o cidadão vê": formulario-renderizacao.md
-  - X-Forms: xforms.md
-  - Orquestrador: orquestrador.md
+  - Formulário:
+      - Padrão de formulário: formulario.md
+      - Componentes do formulário: componentes.md
+      - O que o cidadão vê: formulario-renderizacao.md
+  - Construir:
+      - X-Forms: xforms.md
+      - Orquestrador: orquestrador.md
+      - Usar com IA: ia.md
   - Homologação com a SETDIG: homologacao.md
-  - Usar com IA: ia.md
-  - Referências: referencias.md
-  - Design deste guia: design.md
+  - Sobre o guia:
+      - Referências: referencias.md
+      - Design deste guia: design.md

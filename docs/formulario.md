@@ -18,7 +18,8 @@ Pergunta que guia tudo: *isso deixa o formulário mais fácil de preencher?*
 
 ## Para parecer o mesmo sistema
 
-- Use os componentes do **Design System MS**. Não crie botão, campo ou cor próprios.
+- Use os [componentes do formulário](componentes.md) do **Design System MS**, os mesmos no X-Forms e no
+  Orquestrador. Não crie botão, campo ou cor próprios.
 - **Um campo por linha.** No X-Forms, nunca marque `startWithNewLine: false` para pôr dois campos lado a lado
   ([Diagramação](https://fabioramos-02.github.io/estudo-formularios/01-diagramacao/)).
 - **A ajuda fica abaixo do campo**, como no `ds-input` do DS, e vira a mensagem de erro. Nunca entre o rótulo e o campo.

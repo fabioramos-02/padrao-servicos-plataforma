@@ -9,7 +9,8 @@ carta de serviço, pelo botão "Acessar serviço".
 1. A SETDIG aprova o serviço e conduz a reunião de entendimento com o órgão.
 2. A X-VIA cria o ambiente e o repositório pelo Orquestrador.
 3. A equipe passa pelo treinamento: Orquestrador, Design System e SmartPass.
-4. Desenvolva a tela com os componentes do **Design System MS** e o [padrão de formulário](formulario.md).
+4. Desenvolva a tela com os [componentes do formulário](componentes.md) do **Design System MS** (os mesmos do
+   X-Forms) e o [padrão de formulário](formulario.md).
 5. Atenda os [7 requisitos](checklist.md), com atenção aos que só valem aqui:
     - recursos do celular no serviço nativo;
     - validação no servidor e consultas com parâmetros;

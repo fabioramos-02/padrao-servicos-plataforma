@@ -42,25 +42,14 @@ Exemplo: o formulário *Emitir certificado do ensino médio*, em desenvolvimento
 
 ## O Design System já tem os componentes?
 
-Quase todos. A fonte é o `@plataforma-xvia/ds-react` (0.14.4) e o `llms.txt` dele.
-
-| Componente | No DS MS | Observação |
-|---|---|---|
-| Texto curto, CPF, e-mail, telefone | `ds-input` | Rótulo em cima, **ajuda abaixo do campo**, que vira mensagem de erro |
-| Texto longo com contador | `ds-textarea` | `maxlength` liga o contador "atual/máximo" |
-| Data | `ds-input type="date"` | O próprio DS manda usar este, não o calendário |
-| Opção única | `ds-radio` | **Falta o grupo**: o `fieldset` com `legend` é da aplicação |
-| Várias opções | `ds-checkbox` | **Falta o grupo**, como no radio |
-| Lista | `ds-select`, `ds-combobox` | — |
-| Arquivo | `ds-file-drop` | Formato e tamanho na linha de ajuda |
-| Etapas | `ds-stepper` | O X-Forms usa a barra do SurveyJS |
-| Resumo de erros no topo | `ds-alert` | — |
-| **Máscara** (CPF, CEP, telefone) | **Não tem** | Vem do X-Forms (`inputMask`) |
-| **Colunas e largura por conteúdo** | **Não tem** | Todo campo ocupa 100%; não há componente de layout de formulário |
+Quase todos. A tabela de qual componente usar e o que falta está em
+[Componentes do formulário](componentes.md).
 
 ## O que pedimos à X-VIA
 
-1. **Uma só renderização.** O "Testar questionário" usa o mesmo renderizador do portal. Se der, o canvas também.
+1. ~~Uma só renderização no backoffice.~~ **Decidido em 24/11/2026:** o Designer e o Testar questionário continuam
+   diferentes. Mudar exigiria mexer direto no SurveyJS, e o custo não compensa. O que vale é a tela do cidadão
+   (Visualizar), que já usa os componentes do DS: confira sempre nela.
 2. **O Visualizar segue o DS MS:**
     - a ajuda fica abaixo do campo, como no `ds-input`, nunca entre o rótulo e o campo;
     - o contador fica alinhado ao campo dele;
