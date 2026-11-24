@@ -62,6 +62,13 @@ Estes pontos ainda estão sendo definidos com a X-VIA. Deixe o ponto de integra�
 - Grupo de opções em `fieldset` com `legend`. Todo campo tem `label` ligado ao campo.
 - Ícone decorativo leva `aria-hidden="true"`.
 
+## Quando faltar informação
+- **Nome de componente e de prop:** confira no `llms.txt` do `@plataforma-xvia/ds-react`. Não chute o nome.
+- **SmartPass, dados mestres, status e evento de uso:** use o que o template do Orquestrador já traz. Se o template
+  não tiver, não invente uma API: deixe a chamada isolada numa função e marque `TODO(plataforma)`.
+- **Regra do serviço** (quem pode pedir, dependente, prazo, tipo e tamanho de anexo): quem decide é o órgão. Pergunte,
+  em vez de supor, e deixe o valor numa constante só.
+
 ## Não faça
 - Login próprio ou tela de senha.
 - Base própria de dados do cidadão.
