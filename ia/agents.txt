@@ -15,7 +15,10 @@ Padrão completo: <https://fabioramos-02.github.io/padrao-servicos-plataforma/>
   `llms.txt` do pacote `@plataforma-xvia/ds-react`.
 - Não crie botão, campo, cor, fonte ou espaçamento próprio. Cor e espaço vêm só dos tokens `--ds-*`.
 - Mantenha o cabeçalho, a trilha e o rodapé do portal.
-- Se faltar componente no DS, avise e use o mais próximo. Não invente um.
+- Formulário usa os componentes da seção Formulários do Storybook:
+  <https://designsystem.digital.ms.gov.br/?path=/docs/formul%C3%A1rios-ds-checkbox--docs>. São os mesmos do X-Forms.
+- Se faltar componente no DS, pare e avise: o componente novo passa antes pelo Figma e pelo DS (pedido à SETDIG).
+  Até lá, use o mais próximo. Não invente um.
 
 ## Login e dados do cidadão
 - Login **só pelo SmartPass**. Nunca crie login, cadastro de senha ou sessão própria.
