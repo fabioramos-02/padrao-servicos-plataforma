@@ -35,6 +35,8 @@ Padrão completo: <https://fabioramos-02.github.io/padrao-servicos-plataforma/>
 - Escolha única com 2 a 4 opções que precisam de explicação usa a opção em card do DS (em criação; até lá, use o radio do DS). Fora disso, use o radio ou a
   lista do DS.
 - Etapas usam o `ds-stepper`. O resumo de erros fica no topo, com `ds-alert`.
+- Ao enviar, mostre o número do pedido e ofereça o comprovante.
+- Se der erro ou um sistema do órgão cair, o cidadão não perde o que digitou e a mensagem diz o que fazer.
 - Regras: [padrão de formulário](https://fabioramos-02.github.io/padrao-servicos-plataforma/formulario/).
 
 ## Segurança
