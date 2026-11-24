@@ -32,6 +32,7 @@
   .lead strong { color: var(--tinta); }
 
   h2 { font-size: .95rem; font-weight: 700; color: var(--azul); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; display: flex; gap: 10px; align-items: center; }
+  h2 small { font: 600 .78rem "Open Sans", sans-serif; text-transform: none; letter-spacing: 0; color: var(--cinza); }
   h2::after { content: ""; flex: 1; height: 1px; background: var(--linha); }
 
   /* trilho */
@@ -96,7 +97,7 @@
       <li class="etapa"><div class="marco">1</div><div><b>Órgão pede</b><span>o serviço novo</span><em class="quem orgao">Órgão</em></div></li>
       <li class="etapa"><div class="marco">2</div><div><b>SETDIG aprova</b><span>e prioriza no portfólio</span><em class="quem">SETDIG</em></div></li>
       <li class="etapa"><div class="marco">3</div><div><b>Órgão constrói</b><span>no X-Forms ou no Orquestrador</span><em class="quem orgao">Órgão</em></div></li>
-      <li class="etapa"><div class="marco">4</div><div><b>Confere o checklist</b><span>os 7 requisitos e o formulário</span><em class="quem orgao">Órgão</em></div></li>
+      <li class="etapa"><div class="marco">4</div><div><b>Confere o checklist</b><span>os 7 requisitos e a base</span><em class="quem orgao">Órgão</em></div></li>
       <li class="etapa porta"><div class="marco">5</div><div><b>Homologa</b><span>porta de entrada: sem aceite, não publica</span><em class="quem">SETDIG</em></div></li>
       <li class="etapa fim"><div class="marco">6</div><div><b>Publica</b><span>o serviço e a carta</span><em class="quem orgao">Órgão</em></div></li>
     </ol>
@@ -104,16 +105,16 @@
   </section>
 
   <section aria-labelledby="t-req">
-    <h2 id="t-req">Os 7 requisitos de todo serviço</h2>
+    <h2 id="t-req">Os 7 requisitos de todo serviço <small>· cada um diz como a SETDIG confere</small></h2>
     <div class="grade">
-      <article class="req"><span class="num">1</span><h3>Dados mestres</h3><p>Puxa da fonte oficial. Não pede ao cidadão o que o Estado já sabe.</p></article>
-      <article class="req"><span class="num">2</span><h3>Recursos do celular</h3><p>No serviço nativo, usa localização e câmera quando poupa trabalho.</p></article>
+      <article class="req"><span class="num">1</span><h3>Dados mestres</h3><p>Entra pelo SmartPass e puxa da fonte oficial. Não pede ao cidadão o que o Estado já sabe.</p></article>
+      <article class="req"><span class="num">2</span><h3>Recursos do celular</h3><p>Funciona inteiro no celular. No nativo, usa localização e câmera quando poupa trabalho.</p></article>
       <article class="req"><span class="num">3</span><h3>Avaliação de Serviços</h3><p>Todo serviço termina com a avaliação padrão, no modelo gov.br.</p></article>
-      <article class="req"><span class="num">4</span><h3>Status na Minha área</h3><p>O pedido aparece em Serviços em andamento, com status que o cidadão entende.</p></article>
+      <article class="req"><span class="num">4</span><h3>Status na Minha área</h3><p>Dá número do pedido e comprovante. O status aparece em Serviços em andamento, em linguagem do cidadão.</p></article>
       <article class="req"><span class="num">5</span><h3>Serviço proativo</h3><p>Registra o uso para a plataforma avisar antes de o cidadão pedir: renovação, vencimento, próximo passo.</p></article>
-      <article class="req"><span class="num">6</span><h3>Campos protegidos</h3><p>Valida no servidor, limita tamanho e bloqueia SQL injection.</p></article>
-      <article class="req chave"><span class="num">7</span><h3>Homologação SETDIG</h3><p>Nenhum serviço vai ao ar sem o aceite da SETDIG.</p></article>
-      <article class="req base"><span class="num">+</span><h3>Formulário no padrão</h3><p>Design System MS e o Estudo de Formulários. Mesmo campo, mesmo jeito.</p></article>
+      <article class="req"><span class="num">6</span><h3>Campos protegidos</h3><p>Valida no servidor e bloqueia ataque. Se algo cair, o cidadão não perde o que digitou.</p></article>
+      <article class="req chave"><span class="num">7</span><h3>Homologação SETDIG</h3><p>Revisão técnica da X-VIA e aceite da SETDIG. Sem aceite, não vai ao ar.</p></article>
+      <article class="req base"><span class="num">+</span><h3>Base de todo serviço</h3><p>Design System MS, formulário no padrão, linguagem simples, acessibilidade e privacidade.</p></article>
     </div>
   </section>
 
