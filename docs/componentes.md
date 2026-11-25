@@ -5,6 +5,8 @@
 A tela do cidadão no X-Forms (o Visualizar) já é montada com eles. No Orquestrador, a equipe usa os mesmos. Assim o
 cidadão vê o mesmo formulário nas duas ferramentas.
 
+Apresentação com a prova lado a lado: [um formulário só no X-Forms e no Orquestrador](apresentacao/ds/index.html).
+
 ## Qual componente usar
 
 A fonte é o `@plataforma-xvia/ds-react` e o `llms.txt` dele.
