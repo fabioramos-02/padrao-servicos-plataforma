@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Um formulário só</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<style>
+  /* Mesmas cores da página visual do padrão (../index.html) */
+  :root {
+    --azul: #004f9f; --azul-escuro: #00305f; --azul-claro: #e6eef7;
+    --verde: #168821; --amarelo: #ffcd07; --tinta: #1b1f24; --cinza: #5c6670; --linha: #d5dde6;
+    --papel: #f7f9fc;
+  }
+  html, body { background: var(--papel); }
+  .reveal { font-family: "Open Sans", system-ui, sans-serif; color: var(--tinta); font-size: 30px; }
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2 { font-family: Roboto, sans-serif; color: var(--azul-escuro); line-height: 1.08; margin: 0 0 .5em; }
+  .reveal h1 { font-size: 2.3em; font-weight: 900; }
+  .reveal h2 { font-size: 1.5em; font-weight: 900; }
+  .reveal em.marca { font-style: normal; color: var(--azul); box-shadow: inset 0 -.28em 0 var(--amarelo); }
+  .reveal p { margin: 0 0 .6em; line-height: 1.4; }
+  .reveal a { color: var(--azul); text-decoration: underline; }
+  .faixa { display: flex; align-items: center; gap: 12px; font-size: .5em; color: var(--cinza); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 1em; }
+  .faixa::before { content: ""; width: 44px; height: 7px; background: linear-gradient(90deg, var(--azul) 0 50%, var(--amarelo) 50% 75%, var(--verde) 75%); border-radius: 3px; }
+  .lead { color: var(--cinza); border-left: 5px solid var(--azul); padding-left: 18px; font-size: .85em; }
+  .lead strong { color: var(--tinta); }
+  .tag { display: inline-block; font: 700 .55em/1 Roboto, sans-serif; padding: 6px 12px; border-radius: 99px; background: var(--azul-claro); color: var(--azul); }
+  .tag.verde { background: #eef7ef; color: var(--verde); }
+  code { font-size: .9em; background: var(--azul-claro); color: var(--azul-escuro); padding: 1px 7px; border-radius: 5px; }
+
+  /* Slide 2: uma fonte, duas ferramentas */
+  .fonte { display: grid; grid-template-columns: 1fr; justify-items: center; gap: 0; margin-top: .4em; }
+  .caixa { background: #fff; border: 4px solid var(--azul); border-radius: 18px; padding: 18px 28px; text-align: center; }
+  .caixa b { display: block; font: 900 1em Roboto, sans-serif; color: var(--azul-escuro); }
+  .caixa span { display: block; font-size: .6em; color: var(--cinza); margin-top: 4px; }
+  .caixa.ds { background: var(--azul); border-color: var(--azul); }
+  .caixa.ds b, .caixa.ds span { color: #fff; }
+  .setas { width: 62%; height: 70px; position: relative; }
+  .setas::before, .setas::after { content: ""; position: absolute; top: 0; width: 4px; height: 100%; background: var(--azul); }
+  .setas::before { left: 22%; transform: skewX(28deg); transform-origin: top; }
+  .setas::after { right: 22%; transform: skewX(-28deg); transform-origin: top; }
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; width: 82%; }
+  .cidadao { margin-top: 26px; font-size: .7em; color: var(--verde); font-weight: 700; text-align: center; }
+
+  /* Lado a lado */
+  .lado { display: grid; grid-template-columns: 1fr 1.6fr; gap: 28px; align-items: start; }
+  .quadro { background: #fff; border: 1px solid var(--linha); border-radius: 14px; padding: 12px; box-shadow: 0 6px 18px rgba(0,48,95,.08); }
+  .quadro img { display: block; width: 100%; height: auto; margin: 0; border-radius: 6px; }
+  .quadro .rot { display: flex; justify-content: space-between; align-items: center; font-size: .5em; color: var(--cinza); margin-bottom: 8px; }
+  .quadro .rot a { font-size: .95em; }
+  .quadro.recorte img { height: 150px; object-fit: cover; object-position: 50% 50%; }
+  .pilha { display: grid; gap: 14px; }
+
+  /* Marcas sobre o print do serviço */
+  .marcado { position: relative; }
+  .alvo { position: absolute; border: 4px solid var(--amarelo); border-radius: 10px; }
+  .alvo i { position: absolute; top: -34px; left: -4px; font: 700 .5em/1 Roboto, sans-serif; font-style: normal; background: var(--amarelo); color: var(--azul-escuro); padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+
+  /* Slide 6: fluxo */
+  .fluxo { list-style: none; padding: 0; margin: .4em 0 .8em; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: p; }
+  .fluxo li { counter-increment: p; background: #fff; border: 1px solid var(--linha); border-top: 6px solid var(--azul); border-radius: 12px; padding: 14px 16px; font-size: .62em; }
+  .fluxo li::before { content: counter(p); display: block; font: 900 1.6em Roboto, sans-serif; color: var(--azul); }
+  .fluxo li b { display: block; color: var(--azul-escuro); }
+  .falta { display: flex; flex-wrap: wrap; gap: 10px; font-size: .9em; }
+  .regra { margin-top: .6em; font-weight: 700; color: var(--azul-escuro); font-size: .8em; }
+
+  .links { display: grid; gap: 16px; margin-top: .6em; }
+  .links a { display: block; background: #fff; border: 1px solid var(--linha); border-left: 6px solid var(--azul); border-radius: 12px; padding: 18px 22px; text-decoration: none; color: var(--azul-escuro); font: 700 .8em Roboto, sans-serif; }
+  .links a span { display: block; font: 400 .75em "Open Sans", sans-serif; color: var(--cinza); margin-top: 4px; }
+  .reveal .progress { color: var(--azul); }
+  .reveal .controls { color: var(--azul); }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <section>
+    <div class="faixa">SETDIG · Superintendência de Governo Digital</div>
+    <h1>O cidadão vai ver um formulário no <span style="white-space:nowrap">X-Forms</span> e <em class="marca">outro</em> no Orquestrador?</h1>
+    <p class="lead">A pergunta desta apresentação, com a resposta e a prova.</p>
+  </section>
+
+  <section>
+    <div class="faixa">A resposta</div>
+    <h2>Não. As duas ferramentas usam os mesmos componentes.</h2>
+    <div class="fonte">
+      <div class="caixa ds"><b>Design System MS</b><span>seção Formulários: campo, lista, chave, arquivo…</span></div>
+      <div class="setas" aria-hidden="true"></div>
+      <div class="duas">
+        <div class="caixa"><b>X-Forms</b><span>o órgão monta na tela</span></div>
+        <div class="caixa"><b>Orquestrador</b><span>a TI do órgão programa</span></div>
+      </div>
+      <p class="cidadao">= o cidadão vê o mesmo formulário</p>
+    </div>
+    <p class="lead" style="margin-top:.6em">Decidido com a X-VIA (Aylime e Leonardo) em 24/11/2026.</p>
+  </section>
+
+  <section>
+    <div class="faixa">Prova 1 · X-Forms</div>
+    <h2>O campo do X-Forms é o campo do Design System.</h2>
+    <div class="lado">
+      <div class="quadro recorte">
+        <div class="rot"><span class="tag">Design System</span><a href="https://designsystem.digital.ms.gov.br/?path=/docs/formul%C3%A1rios-ds-input--docs" target="_blank" rel="noopener">ds-input ↗</a></div>
+        <img src="../../assets/img/ds/storybook-ds-input.png" alt="Componente ds-input no Storybook: rótulo Nome completo com asterisco, caixa de texto e ajuda abaixo">
+      </div>
+      <div class="quadro">
+        <div class="rot"><span class="tag verde">X-Forms · tela do cidadão</span><span>Emitir certificado do ensino médio</span></div>
+        <img src="../../assets/img/xforms/visualizar-campos.png" alt="Formulário Emitir certificado do ensino médio no X-Forms, com os campos Nome completo, CPF e Data de nascimento">
+      </div>
+    </div>
+    <p class="lead" style="margin-top:.6em">Mesmo rótulo, mesmo asterisco, mesma caixa, mesma fonte.</p>
+  </section>
+
+  <section>
+    <div class="faixa">Prova 2 · Orquestrador</div>
+    <h2>Um serviço real do Orquestrador já usa os mesmos componentes.</h2>
+    <div class="lado">
+      <div class="pilha">
+        <div class="quadro recorte">
+          <div class="rot"><span class="tag">Design System</span><a href="https://designsystem.digital.ms.gov.br/?path=/docs/formul%C3%A1rios-ds-combobox--docs" target="_blank" rel="noopener">ds-combobox ↗</a></div>
+          <img src="../../assets/img/ds/storybook-ds-combobox.png" alt="Componente ds-combobox no Storybook: rótulo Unidade de atendimento e caixa com lupa">
+        </div>
+        <div class="quadro recorte">
+          <div class="rot"><span class="tag">Design System</span><a href="https://designsystem.digital.ms.gov.br/?path=/docs/formul%C3%A1rios-ds-switch--docs" target="_blank" rel="noopener">ds-switch ↗</a></div>
+          <img src="../../assets/img/ds/storybook-ds-switch.png" alt="Componente ds-switch no Storybook: chave de ligar e desligar">
+        </div>
+      </div>
+      <div class="quadro">
+        <div class="rot"><span class="tag verde">Orquestrador · no ar em dev</span><a href="https://portal.dev.pgd.ms.gov.br/app/consultar-delegacias-e-enderecos" target="_blank" rel="noopener">Consultar delegacias ↗</a></div>
+        <div class="marcado">
+          <img src="../../assets/img/ds/orquestrador-delegacias.png" alt="Serviço Consultar delegacias e endereços, feito no Orquestrador, com os campos Município e Nome da Delegacia e a chave Delegacia da Mulher">
+          <div class="alvo" style="left:7.2%;top:56%;width:35.5%;height:10%"><i>ds-combobox</i></div>
+          <div class="alvo" style="left:43%;top:56%;width:35.5%;height:10%"><i>ds-combobox</i></div>
+          <div class="alvo" style="left:78.6%;top:59.5%;width:14.4%;height:5.5%"><i>ds-switch</i></div>
+        </div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:.6em">Conferido no código da página: são os componentes do DS, não uma cópia.</p>
+  </section>
+
+  <section>
+    <div class="faixa">E a diferença que aparece?</div>
+    <h2>A tela diferente é só a de quem monta o formulário.</h2>
+    <div class="lado" style="grid-template-columns:1fr 1fr">
+      <div class="quadro">
+        <div class="rot"><span class="tag">Backoffice · quem monta</span><span>Designer do X-Forms</span></div>
+        <img src="../../assets/img/xforms/designer.png" alt="Designer do X-Forms, a tela de quem monta o formulário">
+      </div>
+      <div class="quadro">
+        <div class="rot"><span class="tag verde">Cidadão · Visualizar</span><span>o que vai ao ar</span></div>
+        <img src="../../assets/img/xforms/visualizar-campos.png" alt="O mesmo formulário na tela do cidadão, com os componentes do Design System">
+      </div>
+    </div>
+    <p class="lead" style="margin-top:.6em">Mudar o backoffice custa caro e não muda nada para o cidadão. <strong>A SETDIG confere sempre no Visualizar.</strong></p>
+  </section>
+
+  <section>
+    <div class="faixa">E quando falta um componente?</div>
+    <h2>Ninguém cria componente só para o próprio serviço.</h2>
+    <ol class="fluxo">
+      <li><b>Confere</b>no Storybook se ele já existe</li>
+      <li><b>Desenha</b>no Figma, pelo UX da X-VIA</li>
+      <li><b>Publica</b>no Design System</li>
+      <li><b>Usa</b>no X-Forms e no Orquestrador</li>
+    </ol>
+    <p style="font-size:.7em;color:var(--cinza)">Ainda faltam no Design System:</p>
+    <div class="falta"><span class="tag">máscara (CPF, CEP)</span><span class="tag">grupo de radio</span><span class="tag">opção em card · em criação</span></div>
+    <p class="regra">Assim o componente novo nasce igual nas duas ferramentas.</p>
+  </section>
+
+  <section>
+    <div class="faixa">Para ver tudo</div>
+    <h2>O padrão completo está no guia.</h2>
+    <div class="links">
+      <a href="../" target="_blank" rel="noopener">Padrão de serviço em uma tela<span>o caminho do serviço e os 7 requisitos</span></a>
+      <a href="../../componentes/" target="_blank" rel="noopener">Componentes do formulário<span>qual componente usar em cada campo</span></a>
+      <a href="https://designsystem.digital.ms.gov.br/?path=/docs/formul%C3%A1rios-ds-checkbox--docs" target="_blank" rel="noopener">Design System MS · Formulários<span>os componentes ao vivo no Storybook</span></a>
+    </div>
+  </section>
+
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: 'c/t', width: 1280, height: 720, margin: 0.05, transition: 'fade' });
+</script>
+</body>
+</html>
