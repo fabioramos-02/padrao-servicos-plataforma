@@ -617,6 +617,95 @@
   
   
   
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Governança
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Governança
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../governanca/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acesso ao GitLab, Orquestrador e Design System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fabioramos-02.github.io/padrao-servicos-plataforma/apresentacao/governanca/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governança em slides
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../homologacao/" class="md-nav__link">
         
@@ -650,10 +739,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -664,8 +753,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Sobre o guia
           </label>
@@ -787,13 +876,10 @@ ligada à carta de serviço, pelo botão "Acessar serviço".</p>
 <ol>
 <li>A SETDIG aprova o serviço e conduz a reunião de entendimento com o órgão.</li>
 <li>A equipe passa pelo treinamento: Orquestrador, Design System e SmartPass.</li>
-<li><strong>Peça acesso ao GitLab</strong> pela carta de serviço
-   <a href="https://www.ms.gov.br/ciencia-e-tecnologia/conceder-acesso-ao-gitlabs17">Conceder acesso ao GitLab</a>, do seu e-mail
-   institucional. No primeiro acesso, crie a sua própria senha. A CSI-EAST põe você como Developer no subgrupo do seu
-   órgão, por exemplo <code>XVIA/orgaos/sefaz</code>. O GitLab só abre na rede do Governo ou pela VPN.</li>
-<li><strong>Crie o repositório pelo Orquestrador</strong>, com o login do GitLab. Escolha o template: Frontend Next.js (tela no
-   portal) ou Backend NestJS (API). Use um nome que nenhum outro órgão use. O repositório nasce privado, com a pipeline
-   e o Design System prontos. Depois de clonar, rode <code>node scripts/initialize.mjs</code>.</li>
+<li><strong>Peça acesso ao GitLab</strong> pela carta de serviço. Você entra como Developer no subgrupo do seu órgão
+   (<code>XVIA/orgaos/&lt;sigla&gt;</code>). Como pedir: <a href="../governanca/#3-como-consigo-acesso">Governança</a>.</li>
+<li><strong>Crie o repositório pelo Orquestrador</strong>, a partir do template, e prepare a sua máquina. Como fazer:
+   <a href="../governanca/#4-como-crio-e-publico-o-meu-servico">Governança</a>.</li>
 <li>Desenvolva a tela com os <a href="../componentes/">componentes do formulário</a> do <strong>Design System MS</strong> (os mesmos do
    X-Forms) e o <a href="../formulario/">padrão de formulário</a>.</li>
 <li>Atenda os <a href="../checklist/">7 requisitos</a>, com atenção aos que só valem aqui:<ul>
@@ -815,16 +901,13 @@ ligada à carta de serviço, pelo botão "Acessar serviço".</p>
 <li>Os dados do cidadão vêm dos dados mestres, não de uma base própria.</li>
 <li>O serviço não guarda dado pessoal além do que precisa para funcionar.</li>
 <li>A tela segue o mesmo cabeçalho, trilha e rodapé do portal.</li>
-<li>O repositório é sempre <strong>privado</strong>. Nunca "Internal": com essa opção, qualquer pessoa logada no GitLab do Estado vê o
-  código.</li>
-<li>Os segredos da pipeline ficam com a X-VIA. O órgão não vê nem cadastra.</li>
+<li>Repositório privado, merge só pelo mantenedor e segredos com a X-VIA: ver
+  <a href="../governanca/#5-o-que-eu-nao-posso-fazer">o que não pode</a>.</li>
 </ul>
 <p>Exemplo no ar (ambiente de desenvolvimento):
 <a href="https://portal.dev.pgd.ms.gov.br/app/consultar-delegacias-e-enderecos">Consultar delegacias e endereços</a>, feito no
 Orquestrador com os componentes do Design System.</p>
-<p>Regras completas de acesso, grupos e segredos:
-<a href="https://docs.google.com/document/d/1kSKsbJ3RTFWfbVw4Ix550Z_S72pQz7PNl-xmdzMnqw0/edit">Governança do Orquestrador e do acesso ao Design System</a>
-(documento da SGD).</p>
+<p>Regras completas de acesso, grupos e segredos: <a href="../governanca/">Governança</a>.</p>
 
 
 

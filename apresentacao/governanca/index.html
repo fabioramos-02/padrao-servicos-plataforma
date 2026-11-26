@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Governança do Orquestrador</title>
+<meta name="description" content="Governança do acesso ao GitLab, ao Orquestrador e ao Design System — SETDIG/SGD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<style>
+  :root {
+    --azul: #004f9f; --azul-escuro: #00305f; --azul-claro: #e6eef7;
+    --verde: #168821; --verde-claro: #eef7ef; --vermelho: #b3261e; --vermelho-claro: #fbeceb;
+    --amarelo: #ffcd07; --tinta: #1b1f24; --cinza: #5c6670; --linha: #d5dde6; --papel: #f7f9fc;
+    --r-background-color: var(--papel);
+    --r-main-font: "Open Sans", system-ui, sans-serif; --r-main-color: var(--tinta); --r-main-font-size: 34px;
+    --r-heading-font: Roboto, sans-serif; --r-heading-color: var(--azul-escuro); --r-heading-text-transform: none;
+    --r-heading-font-weight: 900; --r-link-color: var(--azul);
+  }
+  body { background: var(--papel); font-family: "Open Sans", system-ui, sans-serif; }
+  .reveal-viewport {
+    background-color: var(--papel);
+    background-image: radial-gradient(circle at 1px 1px, #dbe4ee 1px, transparent 0); background-size: 22px 22px;
+  }
+  .reveal { font-family: var(--r-main-font); font-size: var(--r-main-font-size); color: var(--r-main-color); }
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2 { font-family: var(--r-heading-font); font-weight: 900; color: var(--r-heading-color); }
+  .reveal h1 { font-size: 2.3em; line-height: 1.05; margin: 0 0 .5em; }
+  .reveal h2 { font-size: 1.45em; margin: 0 0 .6em; }
+  .reveal a { color: var(--r-link-color); }
+  .reveal code { font-size: .9em; background: var(--azul-claro); padding: 0 .25em; border-radius: 4px; }
+  .reveal h1 em, .reveal h2 em { font-style: normal; color: var(--azul); box-shadow: inset 0 -.28em 0 var(--amarelo); }
+  .faixa { display: flex; align-items: center; gap: 12px; font-size: .5em; color: var(--cinza); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1em; }
+  .faixa::before { content: ""; width: 48px; height: 7px; background: linear-gradient(90deg, var(--azul) 0 50%, var(--amarelo) 50% 75%, var(--verde) 75%); border-radius: 3px; }
+  .lead { color: var(--cinza); border-left: 6px solid var(--azul); padding-left: 20px; font-size: .9em; }
+  .grande { font: 900 1.5em/1.15 Roboto, sans-serif; color: var(--azul-escuro); }
+  .grande em { font-style: normal; color: var(--azul); box-shadow: inset 0 -.28em 0 var(--amarelo); }
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .cartao { background: #fff; border: 1px solid var(--linha); border-radius: 14px; padding: 22px 26px; border-left: 8px solid var(--azul); font-size: .78em; }
+  .cartao h3 { font: 700 1.1em Roboto, sans-serif; color: var(--azul-escuro); margin: 0 0 .4em; text-transform: none; }
+  .cartao.ruim { border-left-color: var(--vermelho); background: var(--vermelho-claro); }
+  .cartao.bom { border-left-color: var(--verde); background: var(--verde-claro); }
+  .reveal ul { margin-left: 1em; }
+  .reveal li { margin: .3em 0; }
+  .passos { list-style: none; margin: 0 !important; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: p; }
+  .passos li { background: #fff; border: 1px solid var(--linha); border-radius: 12px; padding: 18px 14px; font-size: .64em; text-align: center; counter-increment: p; margin: 0; }
+  .passos li::before { content: counter(p); display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto 10px; border-radius: 50%; border: 4px solid var(--azul); font: 900 1.6em Roboto, sans-serif; color: var(--azul); background: #fff; }
+  .passos li b { display: block; color: var(--azul-escuro); font-size: 1.15em; margin-bottom: 4px; }
+  .passos li small { display: block; margin-top: 8px; color: var(--azul); font-weight: 700; }
+  .figura { display: block; margin: 0 auto; max-height: 600px; max-width: 100%; background: #fff; border-radius: 12px; border: 1px solid var(--linha); padding: 10px; }
+  table.quem { width: 100%; border-collapse: collapse; font-size: .62em; }
+  table.quem th, table.quem td { padding: 14px 18px; border-bottom: 1px solid var(--linha); text-align: left; }
+  table.quem th { color: var(--cinza); font-weight: 600; text-transform: uppercase; font-size: .8em; letter-spacing: .05em; }
+  table.quem td:last-child { font-weight: 700; color: var(--azul-escuro); }
+  .selo { display: inline-block; font: 700 .55em "Open Sans", sans-serif; padding: 6px 14px; border-radius: 99px; background: var(--azul-claro); color: var(--azul); }
+  .selo.ok { background: var(--verde-claro); color: var(--verde); }
+  .selo.falta { background: #fff4c2; color: #6b5300; }
+  .linha-status { display: flex; flex-direction: column; gap: 18px; font-size: .78em; }
+  .linha-status div { display: flex; gap: 18px; align-items: center; }
+  .pedido { background: var(--azul); color: #fff; border-radius: 18px; padding: 40px 48px; }
+  .pedido .grande, .pedido h2 { color: #fff; }
+  .pedido .grande em { color: #fff; box-shadow: inset 0 -.28em 0 rgba(255,205,7,.7); }
+  .rodape { position: fixed; bottom: 14px; left: 24px; font-size: 13px; color: var(--cinza); z-index: 30; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+  <div class="faixa">SETDIG · Superintendência de Governo Digital</div>
+  <h1>Governança do <em>Orquestrador</em><br>e do acesso ao Design System</h1>
+  <p class="lead">Quem entra, onde entra e o que pode fazer no GitLab.<br>Validada com a X-VIA (Victor Carnaval) em 25/11/2026.</p>
+</section>
+
+<section>
+  <div class="faixa">O problema</div>
+  <h2>Hoje, entrar no GitLab mostra <em>tudo</em></h2>
+  <div class="duas">
+    <div class="cartao ruim">
+      <h3>Como estava</h3>
+      Um dev de órgão que entra como <b>Guest</b> no grupo <code>XVIA</code> vê <b>todos</b> os repositórios da plataforma, inclusive o código do SmartPass, do CMS e do Portal.
+    </div>
+    <div class="cartao bom">
+      <h3>O que a regra garante</h3>
+      O dev do órgão trabalha só no espaço do órgão dele. O código e os segredos da plataforma ficam fechados.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="faixa">A regra em uma frase</div>
+  <p class="grande">Cada órgão tem o <em>seu espaço</em> no GitLab.<br>A plataforma fica com a X-VIA e a SETDIG.</p>
+</section>
+
+<section>
+  <div class="faixa">Como fica o GitLab</div>
+  <h2>Os grupos</h2>
+  <img class="figura" src="../../assets/img/governanca/grupos-gitlab.svg" alt="A raiz XVIA guarda a plataforma (SmartPass, X-Forms, X-Flows, CMS, Portal, Orquestrador e Design System) e só a X-VIA e a SETDIG mantêm. Abaixo, XVIA/orgaos tem um subgrupo por órgão, como sefaz e iagro, com os devs do órgão como Developer.">
+</section>
+
+<section>
+  <div class="faixa">O caminho do dev do órgão</div>
+  <h2>Do pedido ao serviço publicado</h2>
+  <ol class="passos">
+    <li><b>Pede acesso</b>pela carta “Conceder acesso ao GitLab”<small>CSI-EAST, até 2 dias úteis</small></li>
+    <li><b>Entra no órgão</b>como Developer em <code>XVIA/orgaos/&lt;sigla&gt;</code><small>CSI-EAST</small></li>
+    <li><b>Cria o repositório</b>pelo template do Orquestrador, já privado e com o Design System<small>Dev do órgão</small></li>
+    <li><b>Abre merge request</b>e o mantenedor do órgão aceita<small>Mantenedor do subgrupo</small></li>
+    <li><b>Publica</b>a pipeline testa e publica; a carta liga a tela no portal<small>Automático + CMS</small></li>
+  </ol>
+</section>
+
+<section>
+  <div class="faixa">Limites</div>
+  <h2>O que o dev do órgão <em>não</em> pode</h2>
+  <div class="duas">
+    <div class="cartao ruim"><h3>Fora do espaço dele</h3>Entrar na raiz <code>XVIA</code> ou no subgrupo de outro órgão.</div>
+    <div class="cartao ruim"><h3>Repositório “Internal”</h3>Qualquer pessoa logada no GitLab do Estado veria o código. Sempre privado.</div>
+    <div class="cartao ruim"><h3>Merge direto</h3>Em <code>develop</code>, <code>homolog</code> ou <code>main</code>. Só o mantenedor.</div>
+    <div class="cartao ruim"><h3>Segredos da pipeline</h3>Ver ou cadastrar. Quem cuida é a X-VIA.</div>
+  </div>
+</section>
+
+<section>
+  <div class="faixa">Design System</div>
+  <h2>Usar o Design System sem ver o código dele</h2>
+  <div class="duas">
+    <div class="cartao bom"><h3>Token só de leitura</h3>O template do Orquestrador já traz um token que só baixa os pacotes do Design System (<code>read_package_registry</code>).</div>
+    <div class="cartao bom"><h3>Sem carta extra</h3>Não existe carta separada para o Design System. A carta de acesso ao GitLab cobre os dois.</div>
+  </div>
+</section>
+
+<section>
+  <div class="faixa">Quem procurar</div>
+  <h2>Cada dúvida tem um dono</h2>
+  <table class="quem">
+    <tr><th>Preciso de</th><th>Procure</th></tr>
+    <tr><td>Usuário no GitLab ou acesso ao subgrupo</td><td>CSI-EAST (Caio), pela carta de serviço</td></tr>
+    <tr><td>Aceite de merge</td><td>Mantenedor do subgrupo do órgão</td></tr>
+    <tr><td>Orquestrador, template ou pipeline</td><td>X-VIA (Victor Carnaval)</td></tr>
+    <tr><td>Componentes do Design System</td><td>UCQI (Thereza e Bruno)</td></tr>
+    <tr><td>Dúvida sobre a regra</td><td>SGD (SETDIG)</td></tr>
+  </table>
+  <p style="font-size:.55em;color:var(--cinza)">Saiu alguém da equipe? O órgão avisa a CSI-EAST para retirar o acesso.</p>
+</section>
+
+<section>
+  <div class="faixa">Onde estamos</div>
+  <h2>Situação</h2>
+  <div class="linha-status">
+    <div><span class="selo ok">Feito</span> Regras levantadas e escritas no guia de padrão de serviço</div>
+    <div><span class="selo ok">Feito</span> Validação técnica da X-VIA (Victor Carnaval, 25/11)</div>
+    <div><span class="selo falta">Agora</span> Aprovação da Duda</div>
+    <div><span class="selo">Depois</span> Apresentar ao Caio, aos líderes e às equipes da CSIC</div>
+  </div>
+</section>
+
+<section>
+  <div class="pedido">
+    <div class="faixa" style="color:#cfe0f3">O pedido</div>
+    <p class="grande">Aprovar a governança para <em>apresentar às equipes</em> da CSIC.</p>
+    <p style="font-size:.6em;margin-top:1.2em">Regra completa: <a style="color:#fff;text-decoration:underline" href="../../governanca/">guia de padrão de serviço › Governança</a></p>
+  </div>
+</section>
+
+</div>
+</div>
+<div class="rodape">SETDIG · SGD · novembro de 2026</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: "c/t", transition: "slide", width: 1280, height: 760, margin: 0.06 });
+</script>
+</body>
+</html>
