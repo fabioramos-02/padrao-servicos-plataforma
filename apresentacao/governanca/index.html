@@ -6,63 +6,95 @@
 <title>Governança do Orquestrador</title>
 <meta name="description" content="Governança do acesso ao GitLab, ao Orquestrador e ao Design System — SETDIG/SGD">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reset.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
 <style>
+  /* Fonte de título do Design System MS (mesmos arquivos do Storybook) */
+  @font-face { font-family: "Avenir Next LT Pro"; src: url(../../assets/fonts/AvenirNextLTPro-Medium.otf) format("opentype"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "Avenir Next LT Pro"; src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf) format("opentype"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Avenir Next LT Pro"; src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf) format("opentype"); font-weight: 700; font-display: swap; }
+
+  /* Tokens do Design System MS */
   :root {
-    --azul: #004f9f; --azul-escuro: #00305f; --azul-claro: #e6eef7;
-    --verde: #168821; --verde-claro: #eef7ef; --vermelho: #b3261e; --vermelho-claro: #fbeceb;
-    --amarelo: #ffcd07; --tinta: #1b1f24; --cinza: #5c6670; --linha: #d5dde6; --papel: #f7f9fc;
-    --r-background-color: var(--papel);
-    --r-main-font: "Open Sans", system-ui, sans-serif; --r-main-color: var(--tinta); --r-main-font-size: 34px;
-    --r-heading-font: Roboto, sans-serif; --r-heading-color: var(--azul-escuro); --r-heading-text-transform: none;
-    --r-heading-font-weight: 900; --r-link-color: var(--azul);
+    --ds-font-family-heading: "Avenir Next LT Pro", Arial, sans-serif;
+    --ds-font-family-body: "Open Sans", Arial, sans-serif;
+    --ds-primary: #004f9f; --ds-primary-escuro: #001020; --ds-primary-claro: #e6eef7;
+    --ds-golden: #ffd500; --ds-verde: #007f31; --ds-verde-claro: #e8f4ec;
+    --ds-vermelho: #da1e28; --ds-vermelho-claro: #fdeced;
+    --ds-texto: #1d1d1b; --ds-texto-2: #565654; --ds-borda: #d5d5d5; --ds-fundo: #f9f9f9;
   }
-  body { background: var(--papel); font-family: "Open Sans", system-ui, sans-serif; }
-  .reveal-viewport {
-    background-color: var(--papel);
-    background-image: radial-gradient(circle at 1px 1px, #dbe4ee 1px, transparent 0); background-size: 22px 22px;
-  }
-  .reveal { font-family: var(--r-main-font); font-size: var(--r-main-font-size); color: var(--r-main-color); }
+  body, .reveal-viewport { background: var(--ds-fundo); font-family: var(--ds-font-family-body); }
+  .reveal-viewport { background-image: radial-gradient(circle at 1px 1px, #dfe5ec 1px, transparent 0); background-size: 24px 24px; }
+  .reveal { font-family: var(--ds-font-family-body); font-size: 30px; color: var(--ds-texto); }
   .reveal .slides { text-align: left; }
-  .reveal h1, .reveal h2 { font-family: var(--r-heading-font); font-weight: 900; color: var(--r-heading-color); }
-  .reveal h1 { font-size: 2.3em; line-height: 1.05; margin: 0 0 .5em; }
-  .reveal h2 { font-size: 1.45em; margin: 0 0 .6em; }
-  .reveal a { color: var(--r-link-color); }
-  .reveal code { font-size: .9em; background: var(--azul-claro); padding: 0 .25em; border-radius: 4px; }
-  .reveal h1 em, .reveal h2 em { font-style: normal; color: var(--azul); box-shadow: inset 0 -.28em 0 var(--amarelo); }
-  .faixa { display: flex; align-items: center; gap: 12px; font-size: .5em; color: var(--cinza); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1em; }
-  .faixa::before { content: ""; width: 48px; height: 7px; background: linear-gradient(90deg, var(--azul) 0 50%, var(--amarelo) 50% 75%, var(--verde) 75%); border-radius: 3px; }
-  .lead { color: var(--cinza); border-left: 6px solid var(--azul); padding-left: 20px; font-size: .9em; }
-  .grande { font: 900 1.5em/1.15 Roboto, sans-serif; color: var(--azul-escuro); }
-  .grande em { font-style: normal; color: var(--azul); box-shadow: inset 0 -.28em 0 var(--amarelo); }
-  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
-  .cartao { background: #fff; border: 1px solid var(--linha); border-radius: 14px; padding: 22px 26px; border-left: 8px solid var(--azul); font-size: .78em; }
-  .cartao h3 { font: 700 1.1em Roboto, sans-serif; color: var(--azul-escuro); margin: 0 0 .4em; text-transform: none; }
-  .cartao.ruim { border-left-color: var(--vermelho); background: var(--vermelho-claro); }
-  .cartao.bom { border-left-color: var(--verde); background: var(--verde-claro); }
-  .reveal ul { margin-left: 1em; }
-  .reveal li { margin: .3em 0; }
-  .passos { list-style: none; margin: 0 !important; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: p; }
-  .passos li { background: #fff; border: 1px solid var(--linha); border-radius: 12px; padding: 18px 14px; font-size: .64em; text-align: center; counter-increment: p; margin: 0; }
-  .passos li::before { content: counter(p); display: grid; place-items: center; width: 56px; height: 56px; margin: 0 auto 10px; border-radius: 50%; border: 4px solid var(--azul); font: 900 1.6em Roboto, sans-serif; color: var(--azul); background: #fff; }
-  .passos li b { display: block; color: var(--azul-escuro); font-size: 1.15em; margin-bottom: 4px; }
-  .passos li small { display: block; margin-top: 8px; color: var(--azul); font-weight: 700; }
-  .figura { display: block; margin: 0 auto; max-height: 600px; max-width: 100%; background: #fff; border-radius: 12px; border: 1px solid var(--linha); padding: 10px; }
-  table.quem { width: 100%; border-collapse: collapse; font-size: .62em; }
-  table.quem th, table.quem td { padding: 14px 18px; border-bottom: 1px solid var(--linha); text-align: left; }
-  table.quem th { color: var(--cinza); font-weight: 600; text-transform: uppercase; font-size: .8em; letter-spacing: .05em; }
-  table.quem td:last-child { font-weight: 700; color: var(--azul-escuro); }
-  .selo { display: inline-block; font: 700 .55em "Open Sans", sans-serif; padding: 6px 14px; border-radius: 99px; background: var(--azul-claro); color: var(--azul); }
-  .selo.ok { background: var(--verde-claro); color: var(--verde); }
-  .selo.falta { background: #fff4c2; color: #6b5300; }
-  .linha-status { display: flex; flex-direction: column; gap: 18px; font-size: .78em; }
-  .linha-status div { display: flex; gap: 18px; align-items: center; }
-  .pedido { background: var(--azul); color: #fff; border-radius: 18px; padding: 40px 48px; }
-  .pedido .grande, .pedido h2 { color: #fff; }
-  .pedido .grande em { color: #fff; box-shadow: inset 0 -.28em 0 rgba(255,205,7,.7); }
-  .rodape { position: fixed; bottom: 14px; left: 24px; font-size: 13px; color: var(--cinza); z-index: 30; }
+  .reveal h1, .reveal h2, .reveal h3 { font-family: var(--ds-font-family-heading); color: var(--ds-primary-escuro); letter-spacing: -.01em; }
+  .reveal h1 { font-size: 2.5em; font-weight: 700; line-height: 1.05; margin: 0 0 .5em; }
+  .reveal h2 { font-size: 1.6em; font-weight: 700; line-height: 1.1; margin: 0 0 .7em; }
+  .reveal h3 { font-size: 1.05em; font-weight: 600; margin: 0 0 .3em; }
+  .reveal em.marca { font-style: normal; color: var(--ds-primary); box-shadow: inset 0 -.26em 0 var(--ds-golden); }
+  .reveal code { font-size: .88em; background: var(--ds-primary-claro); color: var(--ds-primary); padding: .05em .3em; border-radius: 6px; }
+  .reveal a { color: var(--ds-primary); }
+
+  .faixa { display: flex; align-items: center; gap: 14px; font: 600 .5em var(--ds-font-family-body); color: var(--ds-texto-2); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1em; }
+  .faixa::before { content: ""; width: 52px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--ds-primary) 0 50%, var(--ds-golden) 50% 75%, var(--ds-verde) 75%); }
+  .lead { color: var(--ds-texto-2); border-left: 6px solid var(--ds-primary); padding-left: 22px; font-size: .85em; line-height: 1.45; }
+  .frase { font: 700 1.9em/1.15 var(--ds-font-family-heading); color: var(--ds-primary-escuro); }
+
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .cartao { background: #fff; border: 1px solid var(--ds-borda); border-left: 10px solid var(--ds-primary); border-radius: 12px; padding: 26px 30px; font-size: .8em; line-height: 1.4; box-shadow: 0 2px 4px rgba(29,29,27,.06); }
+  .cartao.ruim { border-left-color: var(--ds-vermelho); background: var(--ds-vermelho-claro); }
+  .cartao.bom { border-left-color: var(--ds-verde); background: var(--ds-verde-claro); }
+
+  /* Slide dos grupos: diagrama em HTML, legível no projetor */
+  .arvore { display: grid; justify-items: center; gap: 0; }
+  .no { background: #fff; border: 3px solid var(--ds-primary); border-radius: 16px; padding: 18px 28px; text-align: center; box-shadow: 0 8px 12px rgba(29,29,27,.05); }
+  .no b { display: block; font: 700 1.05em var(--ds-font-family-heading); color: var(--ds-primary-escuro); }
+  .no span { display: block; font-size: .62em; color: var(--ds-texto-2); margin-top: 4px; line-height: 1.35; }
+  .no.raiz { width: 1060px; background: var(--ds-primary); border-color: var(--ds-primary); }
+  .no.raiz b, .no.raiz span { color: #fff; }
+  .no.raiz .pilulas { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 12px; }
+  .no.raiz .pilulas i { font: 600 .55em var(--ds-font-family-body); font-style: normal; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); padding: 4px 14px; border-radius: 99px; color: #fff; }
+  .no.raiz .quem { display: inline-block; margin-top: 12px; font: 700 .55em var(--ds-font-family-body); background: var(--ds-golden); color: var(--ds-primary-escuro); padding: 4px 14px; border-radius: 99px; }
+  .no.orgaos { width: 560px; border-color: var(--ds-verde); }
+  .no.orgaos b { color: var(--ds-verde); }
+  .fio { width: 4px; height: 34px; background: var(--ds-borda); }
+  .galhos { position: relative; display: grid; grid-template-columns: repeat(3, 320px); gap: 40px; padding-top: 34px; }
+  .galhos::before { content: ""; position: absolute; top: 0; left: 160px; right: 160px; height: 4px; background: var(--ds-borda); }
+  .galhos .no { position: relative; border-color: var(--ds-verde); border-width: 2px; }
+  .galhos .no::before { content: ""; position: absolute; top: -36px; left: 50%; width: 4px; height: 34px; background: var(--ds-borda); transform: translateX(-50%); }
+  .galhos .no b { color: var(--ds-verde); font-size: .95em; }
+  .galhos .no.vazio { border-style: dashed; }
+  .nota-ds { margin-top: 22px; font-size: .6em; color: var(--ds-texto-2); text-align: center; }
+  .nota-ds b { color: var(--ds-primary); }
+
+  /* Passos */
+  .passos { list-style: none; margin: 0 !important; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; counter-reset: p; position: relative; }
+  .passos::before { content: ""; position: absolute; top: 40px; left: 10%; right: 10%; height: 4px; background: var(--ds-primary); }
+  .passos li { position: relative; text-align: center; counter-increment: p; margin: 0; font-size: .66em; line-height: 1.35; }
+  .passos li::before { content: counter(p); display: grid; place-items: center; width: 84px; height: 84px; margin: 0 auto 16px; border-radius: 50%; border: 5px solid var(--ds-primary); background: #fff; font: 700 1.9em var(--ds-font-family-heading); color: var(--ds-primary); position: relative; }
+  .passos li b { display: block; font: 700 1.25em var(--ds-font-family-heading); color: var(--ds-primary-escuro); margin-bottom: 6px; }
+  .passos li small { display: inline-block; margin-top: 10px; font-size: .9em; font-weight: 700; color: var(--ds-primary); background: var(--ds-primary-claro); padding: 3px 12px; border-radius: 99px; }
+
+  table.quem { width: 100%; border-collapse: collapse; font-size: .7em; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(29,29,27,.06); }
+  table.quem th, table.quem td { padding: 16px 22px; border-bottom: 1px solid var(--ds-borda); text-align: left; }
+  table.quem th { background: var(--ds-primary); color: #fff; font: 600 .8em var(--ds-font-family-heading); letter-spacing: .04em; text-transform: uppercase; }
+  table.quem td:last-child { font-weight: 700; color: var(--ds-primary-escuro); }
+
+  .status { display: grid; gap: 18px; font-size: .85em; }
+  .status div { display: flex; gap: 20px; align-items: center; }
+  .selo { min-width: 120px; text-align: center; font: 700 .6em var(--ds-font-family-body); padding: 7px 16px; border-radius: 99px; background: var(--ds-primary-claro); color: var(--ds-primary); }
+  .selo.ok { background: var(--ds-verde-claro); color: var(--ds-verde); }
+  .selo.agora { background: var(--ds-golden); color: var(--ds-primary-escuro); }
+
+  .pedido { background: var(--ds-primary); border-radius: 20px; padding: 56px 64px; box-shadow: 0 16px 32px rgba(0,79,159,.25); }
+  .pedido .faixa { color: #cfe0f3; }
+  .pedido .frase { color: #fff; }
+  .pedido .frase em { font-style: normal; box-shadow: inset 0 -.26em 0 rgba(255,213,0,.75); }
+  .pedido p.link { font-size: .62em; margin-top: 1.4em; color: #fff; }
+  .pedido p.link a { color: #fff; text-decoration: underline; }
+
+  .rodape { position: fixed; bottom: 14px; left: 24px; font: 13px var(--ds-font-family-body); color: var(--ds-texto-2); z-index: 30; }
 </style>
 </head>
 <body>
@@ -71,13 +103,13 @@
 
 <section>
   <div class="faixa">SETDIG · Superintendência de Governo Digital</div>
-  <h1>Governança do <em>Orquestrador</em><br>e do acesso ao Design System</h1>
+  <h1>Governança do <em class="marca">Orquestrador</em><br>e do acesso ao Design System</h1>
   <p class="lead">Quem entra, onde entra e o que pode fazer no GitLab.<br>Validada com a X-VIA (Victor Carnaval) em 25/11/2026.</p>
 </section>
 
 <section>
   <div class="faixa">O problema</div>
-  <h2>Hoje, entrar no GitLab mostra <em>tudo</em></h2>
+  <h2>Hoje, entrar no GitLab mostra <em class="marca">tudo</em></h2>
   <div class="duas">
     <div class="cartao ruim">
       <h3>Como estava</h3>
@@ -92,32 +124,45 @@
 
 <section>
   <div class="faixa">A regra em uma frase</div>
-  <p class="grande">Cada órgão tem o <em>seu espaço</em> no GitLab.<br>A plataforma fica com a X-VIA e a SETDIG.</p>
+  <p class="frase">Cada órgão tem o <em class="marca">seu espaço</em> no GitLab.<br>A plataforma fica com a X-VIA e a SETDIG.</p>
 </section>
 
 <section>
   <div class="faixa">Como fica o GitLab</div>
-  <h2>Os grupos</h2>
-  <img class="figura" src="../../assets/img/governanca/grupos-gitlab.svg" alt="A raiz XVIA guarda a plataforma (SmartPass, X-Forms, X-Flows, CMS, Portal, Orquestrador e Design System) e só a X-VIA e a SETDIG mantêm. Abaixo, XVIA/orgaos tem um subgrupo por órgão, como sefaz e iagro, com os devs do órgão como Developer.">
+  <div class="arvore" role="img" aria-label="A raiz XVIA guarda a plataforma e só a X-VIA e a SETDIG mantêm. Abaixo, XVIA/orgaos tem um subgrupo por órgão, como sefaz e iagro, com os devs do órgão como Developer e um mantenedor.">
+    <div class="no raiz">
+      <b>XVIA · raiz</b>
+      <div class="pilulas"><i>SmartPass</i><i>X-Forms</i><i>X-Flows</i><i>CMS</i><i>Portal</i><i>Orquestrador</i><i>Design System</i></div>
+      <span class="quem">Só a X-VIA e a SETDIG · segredos da pipeline protegidos</span>
+    </div>
+    <div class="fio"></div>
+    <div class="no orgaos"><b>XVIA/orgaos</b><span>Um subgrupo por órgão · padrão mantido pela SGD</span></div>
+    <div class="galhos">
+      <div class="no"><b>orgaos/sefaz</b><span>Devs do órgão (Developer)<br>1 mantenedor</span></div>
+      <div class="no"><b>orgaos/iagro</b><span>Devs do órgão (Developer)<br>1 mantenedor</span></div>
+      <div class="no vazio"><b>orgaos/&lt;sigla&gt;</b><span>Um para cada órgão<br>que entra na plataforma</span></div>
+    </div>
+  </div>
+  <p class="nota-ds">O Design System chega ao repositório do órgão por um <b>token só de leitura</b>, que já vem no template.</p>
 </section>
 
 <section>
   <div class="faixa">O caminho do dev do órgão</div>
   <h2>Do pedido ao serviço publicado</h2>
   <ol class="passos">
-    <li><b>Pede acesso</b>pela carta “Conceder acesso ao GitLab”<small>CSI-EAST, até 2 dias úteis</small></li>
-    <li><b>Entra no órgão</b>como Developer em <code>XVIA/orgaos/&lt;sigla&gt;</code><small>CSI-EAST</small></li>
-    <li><b>Cria o repositório</b>pelo template do Orquestrador, já privado e com o Design System<small>Dev do órgão</small></li>
-    <li><b>Abre merge request</b>e o mantenedor do órgão aceita<small>Mantenedor do subgrupo</small></li>
-    <li><b>Publica</b>a pipeline testa e publica; a carta liga a tela no portal<small>Automático + CMS</small></li>
+    <li><b>Pede acesso</b>pela carta “Conceder acesso ao GitLab”<br><small>CSI-EAST · até 2 dias</small></li>
+    <li><b>Entra no órgão</b>como Developer em <code>orgaos/&lt;sigla&gt;</code><br><small>CSI-EAST</small></li>
+    <li><b>Cria o repositório</b>pelo template, já privado e com o Design System<br><small>Dev do órgão</small></li>
+    <li><b>Pede o merge</b>e o mantenedor do órgão aceita<br><small>Mantenedor</small></li>
+    <li><b>Publica</b>a pipeline publica e a carta liga a tela no portal<br><small>Automático + CMS</small></li>
   </ol>
 </section>
 
 <section>
   <div class="faixa">Limites</div>
-  <h2>O que o dev do órgão <em>não</em> pode</h2>
+  <h2>O que o dev do órgão <em class="marca">não</em> pode</h2>
   <div class="duas">
-    <div class="cartao ruim"><h3>Fora do espaço dele</h3>Entrar na raiz <code>XVIA</code> ou no subgrupo de outro órgão.</div>
+    <div class="cartao ruim"><h3>Sair do espaço dele</h3>Entrar na raiz <code>XVIA</code> ou no subgrupo de outro órgão.</div>
     <div class="cartao ruim"><h3>Repositório “Internal”</h3>Qualquer pessoa logada no GitLab do Estado veria o código. Sempre privado.</div>
     <div class="cartao ruim"><h3>Merge direto</h3>Em <code>develop</code>, <code>homolog</code> ou <code>main</code>. Só o mantenedor.</div>
     <div class="cartao ruim"><h3>Segredos da pipeline</h3>Ver ou cadastrar. Quem cuida é a X-VIA.</div>
@@ -128,7 +173,7 @@
   <div class="faixa">Design System</div>
   <h2>Usar o Design System sem ver o código dele</h2>
   <div class="duas">
-    <div class="cartao bom"><h3>Token só de leitura</h3>O template do Orquestrador já traz um token que só baixa os pacotes do Design System (<code>read_package_registry</code>).</div>
+    <div class="cartao bom"><h3>Token só de leitura</h3>O template do Orquestrador já traz um token que só baixa os pacotes do Design System.</div>
     <div class="cartao bom"><h3>Sem carta extra</h3>Não existe carta separada para o Design System. A carta de acesso ao GitLab cobre os dois.</div>
   </div>
 </section>
@@ -144,25 +189,24 @@
     <tr><td>Componentes do Design System</td><td>UCQI (Thereza e Bruno)</td></tr>
     <tr><td>Dúvida sobre a regra</td><td>SGD (SETDIG)</td></tr>
   </table>
-  <p style="font-size:.55em;color:var(--cinza)">Saiu alguém da equipe? O órgão avisa a CSI-EAST para retirar o acesso.</p>
 </section>
 
 <section>
   <div class="faixa">Onde estamos</div>
   <h2>Situação</h2>
-  <div class="linha-status">
-    <div><span class="selo ok">Feito</span> Regras levantadas e escritas no guia de padrão de serviço</div>
+  <div class="status">
+    <div><span class="selo ok">Feito</span> Regras escritas no guia de padrão de serviço</div>
     <div><span class="selo ok">Feito</span> Validação técnica da X-VIA (Victor Carnaval, 25/11)</div>
-    <div><span class="selo falta">Agora</span> Aprovação da Duda</div>
+    <div><span class="selo agora">Agora</span> Aprovação da Duda</div>
     <div><span class="selo">Depois</span> Apresentar ao Caio, aos líderes e às equipes da CSIC</div>
   </div>
 </section>
 
 <section>
   <div class="pedido">
-    <div class="faixa" style="color:#cfe0f3">O pedido</div>
-    <p class="grande">Aprovar a governança para <em>apresentar às equipes</em> da CSIC.</p>
-    <p style="font-size:.6em;margin-top:1.2em">Regra completa: <a style="color:#fff;text-decoration:underline" href="../../governanca/">guia de padrão de serviço › Governança</a></p>
+    <div class="faixa">O pedido</div>
+    <p class="frase">Aprovar a governança para <em>apresentar às equipes</em> da CSIC.</p>
+    <p class="link">Regra completa: <a href="../../governanca/">guia de padrão de serviço › Governança</a></p>
   </div>
 </section>
 
@@ -171,7 +215,7 @@
 <div class="rodape">SETDIG · SGD · novembro de 2026</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
 <script>
-  Reveal.initialize({ hash: true, slideNumber: "c/t", transition: "slide", width: 1280, height: 760, margin: 0.06 });
+  Reveal.initialize({ hash: true, slideNumber: "c/t", transition: "slide", width: 1280, height: 760, margin: 0.05 });
 </script>
 </body>
 </html>
