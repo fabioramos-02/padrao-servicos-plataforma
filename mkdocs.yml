@@ -66,6 +66,9 @@ nav:
       - X-Forms: xforms.md
       - Orquestrador: orquestrador.md
       - Usar com IA: ia.md
+  - Governança:
+      - Acesso ao GitLab, Orquestrador e Design System: governanca.md
+      - "Governança em slides": https://fabioramos-02.github.io/padrao-servicos-plataforma/apresentacao/governanca/
   - Homologação com a SETDIG: homologacao.md
   - Sobre o guia:
       - Referências: referencias.md

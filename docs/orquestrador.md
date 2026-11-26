@@ -8,13 +8,10 @@ ligada à carta de serviço, pelo botão "Acessar serviço".
 
 1. A SETDIG aprova o serviço e conduz a reunião de entendimento com o órgão.
 2. A equipe passa pelo treinamento: Orquestrador, Design System e SmartPass.
-3. **Peça acesso ao GitLab** pela carta de serviço
-   [Conceder acesso ao GitLab](https://www.ms.gov.br/ciencia-e-tecnologia/conceder-acesso-ao-gitlabs17), do seu e-mail
-   institucional. No primeiro acesso, crie a sua própria senha. A CSI-EAST põe você como Developer no subgrupo do seu
-   órgão, por exemplo `XVIA/orgaos/sefaz`. O GitLab só abre na rede do Governo ou pela VPN.
-4. **Crie o repositório pelo Orquestrador**, com o login do GitLab. Escolha o template: Frontend Next.js (tela no
-   portal) ou Backend NestJS (API). Use um nome que nenhum outro órgão use. O repositório nasce privado, com a pipeline
-   e o Design System prontos. Depois de clonar, rode `node scripts/initialize.mjs`.
+3. **Peça acesso ao GitLab** pela carta de serviço. Você entra como Developer no subgrupo do seu órgão
+   (`XVIA/orgaos/<sigla>`). Como pedir: [Governança](governanca.md#3-como-consigo-acesso).
+4. **Crie o repositório pelo Orquestrador**, a partir do template, e prepare a sua máquina. Como fazer:
+   [Governança](governanca.md#4-como-crio-e-publico-o-meu-servico).
 5. Desenvolva a tela com os [componentes do formulário](componentes.md) do **Design System MS** (os mesmos do
    X-Forms) e o [padrão de formulário](formulario.md).
 6. Atenda os [7 requisitos](checklist.md), com atenção aos que só valem aqui:
@@ -34,14 +31,11 @@ ligada à carta de serviço, pelo botão "Acessar serviço".
 - Os dados do cidadão vêm dos dados mestres, não de uma base própria.
 - O serviço não guarda dado pessoal além do que precisa para funcionar.
 - A tela segue o mesmo cabeçalho, trilha e rodapé do portal.
-- O repositório é sempre **privado**. Nunca "Internal": com essa opção, qualquer pessoa logada no GitLab do Estado vê o
-  código.
-- Os segredos da pipeline ficam com a X-VIA. O órgão não vê nem cadastra.
+- Repositório privado, merge só pelo mantenedor e segredos com a X-VIA: ver
+  [o que não pode](governanca.md#5-o-que-eu-nao-posso-fazer).
 
 Exemplo no ar (ambiente de desenvolvimento):
 [Consultar delegacias e endereços](https://portal.dev.pgd.ms.gov.br/app/consultar-delegacias-e-enderecos), feito no
 Orquestrador com os componentes do Design System.
 
-Regras completas de acesso, grupos e segredos:
-[Governança do Orquestrador e do acesso ao Design System](https://docs.google.com/document/d/1kSKsbJ3RTFWfbVw4Ix550Z_S72pQz7PNl-xmdzMnqw0/edit)
-(documento da SGD).
+Regras completas de acesso, grupos e segredos: [Governança](governanca.md).
