@@ -13,7 +13,9 @@ desenvolve para um órgão **sem expor o código e os segredos da plataforma**.
 
 ## 2. Como os grupos estão organizados?
 
-![Grupos da X-VIA no GitLab: a raiz XVIA guarda a plataforma; cada órgão tem um subgrupo em XVIA/orgaos](assets/img/governanca/grupos-gitlab.svg)
+Clique na figura para ampliar.
+
+[![Grupos da X-VIA no GitLab: a raiz XVIA guarda a plataforma; cada órgão tem um subgrupo em XVIA/orgaos](assets/img/governanca/grupos-gitlab.svg)](assets/img/governanca/grupos-gitlab.svg){ target=_blank }
 
 | Grupo | O que tem | Quem entra |
 |---|---|---|
@@ -36,7 +38,7 @@ Não existe carta separada para o Design System: a de acesso ao GitLab cobre os 
 
 ## 4. Como crio e publico o meu serviço?
 
-![Do pedido de acesso à publicação: dev do órgão, CSI-EAST, mantenedor do subgrupo e Orquestrador](assets/img/governanca/jornada-dev.svg)
+[![Do pedido de acesso à publicação: dev do órgão, CSI-EAST, mantenedor do subgrupo e Orquestrador](assets/img/governanca/jornada-dev.svg)](assets/img/governanca/jornada-dev.svg){ target=_blank }
 
 1. Entre no Orquestrador com o login do GitLab e escolha o template: **Frontend Next.js** (tela no portal) ou
    **Backend NestJS** (API). Use um nome de repositório que nenhum outro órgão use. O repositório nasce privado, com a
