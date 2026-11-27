@@ -46,9 +46,10 @@ Não existe carta separada para o Design System: a de acesso ao GitLab cobre os 
 2. Depois de clonar, rode `node scripts/initialize.mjs` para preparar a sua máquina.
 3. Trabalhe numa branch sua e abra merge request. A `develop` publica em desenvolvimento, a `homolog` em homologação e
    a `main` em produção. O mantenedor do subgrupo aceita o merge.
-4. A pipeline testa, analisa o código e publica sozinha.
-5. Para a tela aparecer no portal, ligue a carta de serviço a ela no CMS. A carta precisa ter uma etapa digital. Nessa
-   etapa, marque o serviço como interno e escolha o microfrontend.
+4. A pipeline testa, analisa o código, publica e registra o microfrontend no CMS sozinha.
+5. A tela só aparece no portal quando o **Administrador do CMS** liga a carta de serviço a ela. A carta precisa ter
+   uma etapa digital. Nessa etapa, ele marca o serviço como interno e escolhe o microfrontend. O CMS não publica a
+   carta antes de o microfrontend estar publicado, e sem carta vigente ligada a ele o microfrontend sai do portal.
 
 O passo a passo completo do serviço, com requisitos e homologação, está em [Orquestrador](orquestrador.md).
 

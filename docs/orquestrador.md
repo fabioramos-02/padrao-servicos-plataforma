@@ -21,8 +21,9 @@ ligada à carta de serviço, pelo botão "Acessar serviço".
 7. Trabalhe numa branch sua e abra merge request. A `develop` publica em desenvolvimento, a `homolog` em homologação e
    a `main` em produção. O mantenedor do subgrupo aceita o merge, e a pipeline testa, analisa e publica.
 8. Entregue o código para a revisão técnica da X-VIA (repasse técnico).
-9. **Ligue a carta à tela no CMS.** A carta precisa ter uma etapa digital. Nessa etapa, marque o serviço como interno
-   e escolha o microfrontend. O CMS só publica a carta depois que o microfrontend foi publicado.
+9. **Peça ao Administrador do CMS para ligar a carta à tela.** A pipeline já registra o microfrontend no CMS, mas a
+   ligação não é automática. A carta precisa ter uma etapa digital. Nessa etapa, o Administrador marca o serviço como
+   interno e escolhe o microfrontend. O CMS só publica a carta depois que o microfrontend foi publicado.
 10. Peça a [homologação](homologacao.md) à SETDIG.
 
 ## Combinados que valem para todo microfrontend

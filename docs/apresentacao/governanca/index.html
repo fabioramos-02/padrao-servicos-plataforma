@@ -46,6 +46,24 @@
   .cartao.ruim { border-left-color: var(--ds-vermelho); background: var(--ds-vermelho-claro); }
   .cartao.bom { border-left-color: var(--ds-verde); background: var(--ds-verde-claro); }
 
+  /* Slide do problema: print real do GitLab */
+  .print-grid { display: grid; grid-template-columns: 560px 1fr; gap: 36px; align-items: start; margin-top: -14px; }
+  .print { position: relative; margin: 0; background: #fff; border: 1px solid var(--ds-borda); border-radius: 12px; overflow: hidden; box-shadow: 0 16px 32px rgba(0,16,32,.16); }
+  .print .barra { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: #eef1f4; border-bottom: 1px solid var(--ds-borda); font: 600 13px var(--ds-font-family-body); color: var(--ds-texto-2); }
+  .print .barra i { width: 10px; height: 10px; border-radius: 50%; background: #c9ced4; }
+  .print .barra span { margin-left: 10px; background: #fff; padding: 2px 12px; border-radius: 99px; }
+  .print img { display: block; width: 100%; height: 470px; object-fit: cover; object-position: top; margin: 0; }
+  .print .alvo { position: absolute; left: 6px; right: 6px; border: 3px solid var(--ds-vermelho); border-radius: 8px; background: rgba(218,30,40,.06); }
+  .print .alvo b { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font: 700 14px var(--ds-font-family-body); background: var(--ds-vermelho); color: #fff; padding: 4px 12px; border-radius: 99px; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+  .print .alvo.orgao { border-color: var(--ds-primary); background: rgba(0,79,159,.06); }
+  .print .alvo.orgao b { background: var(--ds-primary); }
+  .lado { display: grid; gap: 18px; }
+  .lado .cartao { padding: 18px 24px; font-size: .66em; }
+  .lado .cartao h3 { font-size: 1.15em; }
+  .numero { margin: 0; font-size: .7em; color: var(--ds-texto-2); line-height: 1.3; }
+  .numero b { display: block; font: 700 3.4em/1 var(--ds-font-family-heading); color: var(--ds-vermelho); }
+  .fonte { margin: 10px 0 0; font-size: .45em; color: var(--ds-texto-2); }
+
   /* Slide dos grupos: diagrama em HTML, legível no projetor */
   .arvore { display: grid; justify-items: center; gap: 0; }
   .no { background: #fff; border: 3px solid var(--ds-primary); border-radius: 16px; padding: 18px 28px; text-align: center; box-shadow: 0 8px 12px rgba(29,29,27,.05); }
@@ -69,11 +87,13 @@
   .nota-ds b { color: var(--ds-primary); }
 
   /* Passos */
-  .passos { list-style: none; margin: 0 !important; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; counter-reset: p; position: relative; }
-  .passos::before { content: ""; position: absolute; top: 40px; left: 10%; right: 10%; height: 4px; background: var(--ds-primary); }
+  .passos { list-style: none; margin: 0 !important; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; counter-reset: p; position: relative; }
+  .passos::before { content: ""; position: absolute; top: 40px; left: 8%; right: 8%; height: 4px; background: var(--ds-primary); }
   .passos li { position: relative; text-align: center; counter-increment: p; margin: 0; font-size: .66em; line-height: 1.35; }
   .passos li::before { content: counter(p); display: grid; place-items: center; width: 84px; height: 84px; margin: 0 auto 16px; border-radius: 50%; border: 5px solid var(--ds-primary); background: #fff; font: 700 1.9em var(--ds-font-family-heading); color: var(--ds-primary); position: relative; }
   .passos li b { display: block; font: 700 1.25em var(--ds-font-family-heading); color: var(--ds-primary-escuro); margin-bottom: 6px; }
+  .passos li.regra::before { border-color: var(--ds-golden); background: var(--ds-primary-escuro); color: var(--ds-golden); }
+  .passos li.regra small { background: var(--ds-golden); color: var(--ds-primary-escuro); }
   .passos li small { display: inline-block; margin-top: 10px; font-size: .9em; font-weight: 700; color: var(--ds-primary); background: var(--ds-primary-claro); padding: 3px 12px; border-radius: 99px; }
 
   table.quem { width: 100%; border-collapse: collapse; font-size: .7em; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(29,29,27,.06); }
@@ -110,16 +130,21 @@
 <section>
   <div class="faixa">O problema</div>
   <h2>Hoje, entrar no GitLab mostra <em class="marca">tudo</em></h2>
-  <div class="duas">
-    <div class="cartao ruim">
-      <h3>Como estava</h3>
-      Um dev de órgão que entra como <b>Guest</b> no grupo <code>XVIA</code> vê <b>todos</b> os repositórios da plataforma, inclusive o código do SmartPass, do CMS e do Portal.
-    </div>
-    <div class="cartao bom">
-      <h3>O que a regra garante</h3>
-      O dev do órgão trabalha só no espaço do órgão dele. O código e os segredos da plataforma ficam fechados.
+  <div class="print-grid">
+    <figure class="print">
+      <div class="barra"><i></i><i></i><i></i><span>gitlabs.ms.gov.br/xvia</span></div>
+      <img src="../../assets/img/governanca/gitlab-raiz-xvia.png" alt="Tela real do grupo XVIA no GitLab: na mesma lista aparecem repositórios de órgãos (sead, sejusp, ses), do SmartPass, do cofre de segredos openbao e da infraestrutura (kafka, posthog).">
+      <span class="alvo" style="top:263px;height:26px"><b>Cofre de segredos</b></span>
+      <span class="alvo orgao" style="top:313px;height:96px"><b>Serviços de órgãos</b></span>
+      <span class="alvo" style="top:412px;height:96px"><b>SmartPass</b></span>
+    </figure>
+    <div class="lado">
+      <p class="numero"><b>44</b> repositórios<br>visíveis para quem entra no grupo <code>XVIA</code></p>
+      <div class="cartao ruim"><h3>Como está</h3>O serviço do órgão fica ao lado do SmartPass, do CMS, do Portal e do cofre de segredos. Quem entra para cuidar de um serviço enxerga a plataforma inteira.</div>
+      <div class="cartao bom"><h3>O que a regra garante</h3>O dev do órgão trabalha só no espaço do órgão dele. O código e os segredos da plataforma ficam fechados.</div>
     </div>
   </div>
+  <p class="fonte">Tela real do GitLab do Estado, 27/11/2026.</p>
 </section>
 
 <section>
@@ -154,8 +179,10 @@
     <li><b>Entra no órgão</b>como Developer em <code>orgaos/&lt;sigla&gt;</code><br><small>CSI-EAST</small></li>
     <li><b>Cria o repositório</b>pelo template, já privado e com o Design System<br><small>Dev do órgão</small></li>
     <li><b>Pede o merge</b>e o mantenedor do órgão aceita<br><small>Mantenedor</small></li>
-    <li><b>Publica</b>a pipeline publica e a carta liga a tela no portal<br><small>Automático + CMS</small></li>
+    <li><b>Publica</b>a pipeline publica e registra o microfrontend no CMS<br><small>Automático</small></li>
+    <li class="regra"><b>Liga à carta</b>no CMS, na etapa digital da carta, escolhe o microfrontend<br><small>Administrador do CMS</small></li>
   </ol>
+  <p class="nota-ds">Sem carta vigente ligada a ele, o microfrontend <b>não aparece no portal</b>. O CMS não publica a carta antes de o microfrontend estar publicado.</p>
 </section>
 
 <section>
