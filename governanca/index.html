@@ -999,9 +999,10 @@ template do Orquestrador. Ninguém do órgão entra como Guest ou Reporter para 
 <li>Depois de clonar, rode <code>node scripts/initialize.mjs</code> para preparar a sua máquina.</li>
 <li>Trabalhe numa branch sua e abra merge request. A <code>develop</code> publica em desenvolvimento, a <code>homolog</code> em homologação e
    a <code>main</code> em produção. O mantenedor do subgrupo aceita o merge.</li>
-<li>A pipeline testa, analisa o código e publica sozinha.</li>
-<li>Para a tela aparecer no portal, ligue a carta de serviço a ela no CMS. A carta precisa ter uma etapa digital. Nessa
-   etapa, marque o serviço como interno e escolha o microfrontend.</li>
+<li>A pipeline testa, analisa o código, publica e registra o microfrontend no CMS sozinha.</li>
+<li>A tela só aparece no portal quando o <strong>Administrador do CMS</strong> liga a carta de serviço a ela. A carta precisa ter
+   uma etapa digital. Nessa etapa, ele marca o serviço como interno e escolhe o microfrontend. O CMS não publica a
+   carta antes de o microfrontend estar publicado, e sem carta vigente ligada a ele o microfrontend sai do portal.</li>
 </ol>
 <p>O passo a passo completo do serviço, com requisitos e homologação, está em <a href="../orquestrador/">Orquestrador</a>.</p>
 <h2 id="5-o-que-eu-nao-posso-fazer">5. O que eu não posso fazer?<a class="headerlink" href="#5-o-que-eu-nao-posso-fazer" title="Permanent link">&para;</a></h2>
